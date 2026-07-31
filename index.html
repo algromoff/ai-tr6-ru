@@ -1,572 +1,496 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Таиланд 8 дней — Азиатский Странник</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #1A1A1A;
-  --bg2: #1F1F1F;
-  --card: #252525;
-  --card2: #2C2C2C;
-  --orange: #E87728;
-  --orange-dim: rgba(232,119,40,0.12);
-  --orange-glow: rgba(232,119,40,0.25);
-  --white: #FFFFFF;
-  --gray: #7A7A7A;
-  --gray2: #555;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.12);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-img,svg{max-width:100%;height:auto;display:block}
-a{color:inherit;text-decoration:none}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-/* ─── NAV ─── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 5vw;transition:background .4s,backdrop-filter .4s,padding .4s,border-color .4s;border-bottom:1px solid transparent}
-nav.scrolled{background:rgba(18,18,18,.93);backdrop-filter:blur(14px);border-bottom-color:var(--border);padding-top:.9rem;padding-bottom:.9rem}
-.nav-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white);white-space:nowrap}
-.nav-logo span{color:var(--orange)}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);transition:color .25s}
-.nav-links a:hover{color:var(--white)}
-.nav-cta{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;padding:.55rem 1.4rem;border:1px solid var(--orange);color:var(--orange);transition:all .3s;background:transparent;font-family:'Inter',sans-serif;white-space:nowrap}
-.nav-cta:hover{background:var(--orange);color:#000}
-.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
-.nav-burger span{display:block;width:22px;height:1px;background:var(--white);transition:.3s}
-nav.menu-open .nav-links{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(15,15,15,.97);backdrop-filter:blur(16px);padding:1.5rem 5vw 2rem;gap:1.2rem;border-bottom:1px solid var(--border)}
-nav.menu-open .nav-links a{font-size:.8rem;color:var(--white)}
+    <!-- SEO & Meta -->
+    <title>Джарвис | Воркшоп 3 дня — собери своего автономного ИИ-агента</title>
+    <meta name="description" content="3 дня — и у тебя работает автономный ИИ-агент в Telegram: продюсер, маркетолог, программист и дизайнер в одном. Разово 50 000₽, поддержка — 3-5 тыс/мес.">
+    <meta name="keywords" content="ии агент, джарвис, claude code, автоматизация, автономный агент, нейроотдел, воркшоп">
 
-/* ─── HERO ─── */
-#hero{position:relative;width:100%;height:100vh;min-height:620px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#0d0d0d}
-.hero-media{position:absolute;inset:0;z-index:0}
-.hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover;opacity:.75}
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(26,26,26,.25) 0%,rgba(26,26,26,.4) 40%,rgba(26,26,26,.88) 85%,rgba(26,26,26,1) 100%)}
-.hero-content{position:relative;z-index:2;text-align:center;padding:0 5vw;max-width:960px}
-.hero-tag{display:inline-block;font-size:.62rem;letter-spacing:.38em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(232,119,40,.3);padding:.4rem 1.3rem;margin-bottom:1.8rem}
-.hero-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2.8rem,8vw,7rem);line-height:.92;letter-spacing:-.02em;text-transform:uppercase}
-.hero-title .acc{color:var(--orange)}
-.hero-sub{margin-top:1.8rem;font-size:clamp(.88rem,1.8vw,1.05rem);color:rgba(255,255,255,.65);font-weight:300;line-height:1.75}
-.hero-actions{margin-top:2.8rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn-p{padding:.95rem 2.6rem;background:var(--orange);color:#000;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;border:none;cursor:pointer;transition:all .3s;display:inline-block}
-.btn-p:hover{background:#fff;transform:translateY(-3px)}
-.btn-g{padding:.95rem 2.6rem;background:transparent;color:var(--white);font-family:'Montserrat',sans-serif;font-weight:600;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);cursor:pointer;transition:all .3s;display:inline-block}
-.btn-g:hover{border-color:var(--white);transform:translateY(-3px)}
-.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.45rem}
-.hero-scroll-lbl{font-size:.55rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gray)}
-.scroll-bar{width:1px;height:38px;background:linear-gradient(to bottom,var(--gray),transparent);animation:sPulse 2.2s infinite}
-@keyframes sPulse{0%,100%{opacity:.3}50%{opacity:1}}
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Джарвис | Воркшоп 3 дня">
+    <meta property="og:description" content="Собери себе автономного ИИ-агента: продюсер + маркетолог + программист + дизайнер в одном.">
+    <meta property="og:type" content="website">
 
-/* ─── STATS ─── */
-.stats-bar{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 6vw;display:flex;justify-content:space-around;flex-wrap:wrap;gap:2rem}
-.stat{text-align:center}
-.stat-n{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2rem,4.5vw,3rem);line-height:1;color:var(--orange)}
-.stat-l{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);margin-top:.4rem}
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><defs><linearGradient id='grad' x1='0%25' y1='100%25' x2='100%25' y2='0%25'><stop offset='0%25' stop-color='%2300D9FF'/><stop offset='50%25' stop-color='%237C3AED'/><stop offset='100%25' stop-color='%23EC4899'/></linearGradient></defs><path fill='url(%23grad)' d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/></svg>">
 
-/* ─── SECTIONS BASE ─── */
-section{padding:clamp(4rem,10vw,8rem) 6vw}
-.eyebrow{display:block;font-size:.62rem;letter-spacing:.38em;text-transform:uppercase;color:var(--orange);margin-bottom:.9rem}
-.h2{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2rem,5.5vw,4.2rem);line-height:1.02;text-transform:uppercase}
-.h2 .acc{color:var(--orange)}
-.rv{opacity:0;transform:translateY(36px);transition:opacity .75s ease,transform .75s ease}
-.rv.vis{opacity:1;transform:translateY(0)}
-.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
-.rv.d4{transition-delay:.32s}.rv.d5{transition-delay:.40s}
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-/* ─── CITY CARDS ─── */
-.city-cards-wrap{padding:clamp(3rem,7vw,5rem) 6vw clamp(3rem,6vw,4rem)}
-.city-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:4px;margin-top:2.5rem}
-.city-card{position:relative;overflow:hidden;background:var(--card);aspect-ratio:4/3}
-.city-card img{width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.25,.46,.45,.94)}
-.city-card:hover img{transform:scale(1.07)}
-.city-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,.05) 55%,transparent 100%)}
-.city-card-name{position:absolute;bottom:0;left:0;right:0;padding:.9rem 1.1rem;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;display:flex;align-items:center;gap:.55rem}
-.city-card-name::before{content:'';width:18px;height:1px;background:var(--orange);flex-shrink:0}
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-/* ─── ROUTE ─── */
-.route-grid{display:grid;grid-template-columns:1fr 380px;gap:5rem;align-items:stretch}
-.route-desc{color:rgba(255,255,255,.65);line-height:1.8;margin-top:1.4rem;font-size:.93rem;max-width:480px}
-.city-list{margin-top:2rem;display:flex;flex-direction:column}
-.city-row{display:flex;align-items:center;gap:.8rem;padding:.55rem 0;border-bottom:1px solid var(--border);font-size:.78rem;letter-spacing:.06em;color:var(--gray);transition:color .25s}
-.city-row:hover{color:var(--white)}
-.city-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);flex-shrink:0}
-.city-days{margin-left:auto;color:var(--orange);font-size:.68rem;letter-spacing:.1em}
-.map-wrap{display:flex;justify-content:center;align-items:center;background:var(--card);border:1px solid var(--border);color:var(--gray);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:2rem}
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#000000',
+                            card: '#121212',
+                            border: '#262626',
+                            aiCyan: '#00D9FF',
+                            aiViolet: '#7C3AED',
+                            aiMagenta: '#EC4899',
+                            aiGreen: '#22C55E'
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at 50% -20%, rgba(124, 58, 237, 0.18) 0%, rgba(0, 0, 0, 0) 60%)',
+                        'ai-gradient': 'linear-gradient(45deg, #00D9FF 0%, #7C3AED 50%, #EC4899 100%)',
+                    }
+                }
+            }
+        }
+    </script>
 
-/* ─── ITINERARY ─── */
-.itin-head{max-width:620px;margin-bottom:3rem}
-.days{max-width:940px}
-.day{border-bottom:1px solid var(--border)}
-.day-hd{display:flex;align-items:center;gap:1.5rem;padding:1.4rem 0;cursor:pointer;user-select:none}
-.day-hd:hover .day-ti{color:var(--orange)}
-.day-no{font-family:'Montserrat',sans-serif;font-weight:900;font-size:.65rem;letter-spacing:.2em;color:var(--orange);min-width:58px}
-.day-ti{font-family:'Montserrat',sans-serif;font-weight:600;font-size:clamp(.88rem,1.8vw,1.05rem);flex:1;transition:color .25s;line-height:1.3}
-.day-loc{font-size:.7rem;color:var(--gray);letter-spacing:.1em;white-space:nowrap}
-.day-arr{width:26px;height:26px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .35s;flex-shrink:0;font-size:.65rem;color:var(--gray)}
-.day.open .day-arr{transform:rotate(180deg);border-color:var(--orange);color:var(--orange)}
-.day-body{max-height:0;overflow:hidden;transition:max-height .5s ease;padding-left:73px}
-.day.open .day-body{max-height:900px}
-.day-inner{padding-bottom:1.5rem}
-.day-inner p{font-size:.87rem;color:rgba(255,255,255,.68);line-height:1.85;margin-bottom:.9rem}
-.tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.7rem}
-.tag{font-size:.6rem;letter-spacing:.1em;padding:.28rem .75rem;border:1px solid var(--border);color:var(--gray);text-transform:uppercase}
-.tag.hot{border-color:rgba(232,119,40,.35);color:var(--orange)}
-.t-note{font-size:.72rem;color:rgba(232,119,40,.75);margin-top:.8rem}
+    <style>
+        body {
+            background-color: #000000;
+            color: #F8FAFC;
+            overflow-x: hidden;
+        }
 
-/* ─── HIGHLIGHT QUOTE ─── */
-#highlight{background:var(--bg2);position:relative;overflow:hidden;padding:clamp(5rem,12vw,9rem) 6vw}
-.hl-bg-img{position:absolute;inset:0;z-index:0}
-.hl-bg-img img{width:100%;height:100%;object-fit:cover;opacity:.22}
-.hl-bg-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg2) 15%,rgba(31,31,31,.4) 60%,rgba(31,31,31,.1) 100%)}
-.hl-inner{position:relative;z-index:1;max-width:820px}
-.hl-quote{font-family:'Montserrat',sans-serif;font-weight:300;font-style:italic;font-size:clamp(1.3rem,3.8vw,2.6rem);line-height:1.35;color:rgba(255,255,255,.88)}
-.hl-quote strong{font-weight:900;font-style:normal;color:var(--white)}
-.hl-quote .o{color:var(--orange)}
-.hl-cap{margin-top:2rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gray)}
-.hl-feats{display:flex;flex-wrap:wrap;gap:1.8rem;margin-top:2.2rem}
-.hl-feat{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:rgba(255,255,255,.55)}
-.hl-dot{width:4px;height:4px;background:var(--orange);border-radius:50%;flex-shrink:0}
+        .glass {
+            background: #121212;
+            border: 1px solid #262626;
+        }
 
-/* ─── FOOD ─── */
-.food-intro{color:rgba(255,255,255,.6);line-height:1.75;margin-top:1.2rem;max-width:520px;font-size:.92rem}
-.food-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.2rem;margin-top:2.8rem}
-.fc{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .3s}
-.fc:hover{border-color:rgba(232,119,40,.3);transform:translateY(-3px);background:var(--card2)}
-.fc-img{width:100%;height:180px;overflow:hidden}
-.fc-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.fc:hover .fc-img img{transform:scale(1.05)}
-.fc-body{padding:1.1rem 1.2rem;text-align:center}
-.fc h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
-.fc p{font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.65}
+        .text-gradient {
+            background: linear-gradient(to right, #00D9FF, #7C3AED, #EC4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-/* ─── SAFETY ─── */
-#safety{background:var(--bg2)}
-.safe-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.safe-list{list-style:none;margin-top:2rem;display:flex;flex-direction:column;gap:1rem}
-.safe-list li{display:flex;align-items:flex-start;gap:.9rem;font-size:.88rem;color:rgba(255,255,255,.72);line-height:1.65}
-.safe-ico{color:var(--orange);flex-shrink:0;font-size:.9rem;margin-top:.15rem}
-.safe-badge{background:var(--card);border:1px solid var(--border);padding:3rem 2rem;text-align:center}
-.badge-n{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2.8rem,6vw,4.5rem);color:var(--orange);line-height:1}
-.badge-l{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);margin-top:.45rem}
-.badge-sep{width:36px;height:1px;background:var(--border);margin:1.8rem auto}
+        .btn-gradient {
+            background: linear-gradient(135deg, #00D9FF 0%, #7C3AED 55%, #EC4899 100%);
+            transition: all 0.3s ease;
+        }
 
-/* ─── PRICING ─── */
-.price-intro{max-width:600px;margin-bottom:3rem}
-.price-intro p{color:rgba(255,255,255,.62);line-height:1.75;margin-top:.9rem;font-size:.92rem}
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.pc{background:var(--card);border:1px solid var(--border);padding:2.5rem 2rem;transition:all .4s;position:relative}
-.pc.feat{border-color:var(--orange);background:var(--card2)}
-.pc-popular{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--orange);color:#000;font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;font-family:'Montserrat',sans-serif;font-weight:700;padding:.3rem 1rem;white-space:nowrap}
-.pc:not(.feat):hover{border-color:rgba(255,255,255,.15);transform:translateY(-5px)}
-.pc-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.6rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
-.pc-sub{font-size:.78rem;color:var(--gray);margin-bottom:1.5rem;line-height:1.55}
-.pc-price{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2.6rem,5vw,3.6rem);color:var(--orange);line-height:1}
-.pc-per{font-size:.65rem;color:var(--gray);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.5rem}
-.pc-div{height:1px;background:var(--border);margin-bottom:1.5rem}
-.pc-feats{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem}
-.pc-feats li{display:flex;align-items:flex-start;gap:.7rem;font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.5}
-.chk{color:var(--orange);flex-shrink:0;font-size:.85rem}
-.crs{color:var(--gray2);flex-shrink:0;font-size:.85rem}
-.pc-btn{display:block;width:100%;padding:.9rem;text-align:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;transition:all .3s;cursor:pointer;border:none}
-.pc-btn.outline{background:transparent;border:1px solid var(--border);color:var(--white)}
-.pc-btn.outline:hover{border-color:var(--orange);color:var(--orange)}
-.pc-btn.solid{background:var(--orange);color:#000}
-.pc-btn.solid:hover{background:#fff;color:#000}
-.price-note{margin-top:2rem;font-size:.75rem;color:var(--gray);text-align:center;line-height:1.7}
+        .btn-gradient:hover {
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+            transform: translateY(-2px);
+        }
 
-/* ─── REVIEWS ─── */
-.rv-rating{display:flex;align-items:center;gap:.8rem;margin-top:1rem;flex-wrap:wrap}
-.rv-stars{color:var(--orange);font-size:1rem;letter-spacing:.1em}
-.rv-score{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem}
-.rv-count{font-size:.78rem;color:var(--gray)}
-.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin-top:2.8rem}
-.rvc{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.8rem;transition:all .3s}
-.rvc:hover{border-color:rgba(232,119,40,.3);transform:translateY(-3px)}
-.rvc-quote{font-size:.9rem;color:rgba(255,255,255,.78);line-height:1.75;font-style:italic}
-.rvc-author{display:flex;align-items:center;gap:.8rem;margin-top:1.4rem}
-.rvc-avatar{width:42px;height:42px;border-radius:50%;background:var(--orange-dim);border:1px solid rgba(232,119,40,.4);color:var(--orange);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.rvc-name{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.82rem}
-.rvc-meta{font-size:.72rem;color:var(--gray);margin-top:.15rem}
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* ─── CTA ─── */
-#cta{background:var(--bg2);text-align:center;border-top:1px solid var(--border)}
-.cta-in{max-width:660px;margin:0 auto}
-.cta-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2rem,5.5vw,3.6rem);text-transform:uppercase;line-height:1.02;margin-bottom:1.4rem}
-.cta-sub{color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:2.5rem;font-size:.92rem}
-.cta-links{display:flex;justify-content:center;gap:2rem;margin-top:2rem;flex-wrap:wrap}
-.cta-link{display:flex;align-items:center;gap:.45rem;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray);transition:color .25s}
-.cta-link:hover{color:var(--white)}
-
-/* ─── FOOTER ─── */
-footer{padding:2.5rem 5vw;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.fl{font-family:'Montserrat',sans-serif;font-weight:900;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase}
-.fl span{color:var(--orange)}
-.fc2{font-size:.68rem;color:var(--gray)}
-
-@media(max-width:1024px){.route-grid{grid-template-columns:1fr;gap:3rem}.map-wrap{margin-top:1rem}}
-@media(max-width:860px){
-  .safe-grid{grid-template-columns:1fr}
-  .price-grid{grid-template-columns:1fr;max-width:440px;margin-left:auto;margin-right:auto}
-  .nav-links{display:none}
-  .nav-burger{display:flex}
-  .nav-cta{display:none}
-}
-@media(max-width:600px){
-  section{padding:3rem 5vw}
-  .stats-bar{gap:1.5rem}
-  .hero-actions{flex-direction:column;align-items:center}
-  .btn-p,.btn-g{width:240px;text-align:center}
-  .day-loc{display:none}
-  .city-cards-grid{grid-template-columns:repeat(2,1fr)}
-}
-</style>
+        /* Telegram chat mockup */
+        .tg-window {
+            background: #0e1621;
+            border-radius: 1.25rem;
+            border: 1px solid #26323f;
+            overflow: hidden;
+        }
+        .tg-bubble-in {
+            background: #182533;
+            color: #e9edef;
+            border-radius: 14px 14px 14px 2px;
+        }
+        .tg-bubble-out {
+            background: linear-gradient(135deg, #00D9FF15, #7C3AED30);
+            border: 1px solid #7C3AED55;
+            color: #e9edef;
+            border-radius: 14px 14px 2px 14px;
+        }
+        .typing-dot {
+            animation: blink 1.4s infinite both;
+        }
+        .typing-dot:nth-child(2) { animation-delay: .2s; }
+        .typing-dot:nth-child(3) { animation-delay: .4s; }
+        @keyframes blink { 0%, 80%, 100% { opacity: .2; } 40% { opacity: 1; } }
+    </style>
 </head>
-<body>
+<body class="antialiased pb-safe selection:bg-brand-aiViolet selection:text-white">
 
-<!-- ================= NAV ================= -->
-<nav id="nav">
-  <a href="#" class="nav-logo">Азиатский <span>Странник</span></a>
-  <ul class="nav-links">
-    <li><a href="#route">Маршрут</a></li>
-    <li><a href="#journey">Программа</a></li>
-    <li><a href="#safety">Гарантии</a></li>
-    <li><a href="#pricing">Пакеты</a></li>
-    <li><a href="#cta">Контакты</a></li>
-  </ul>
-  <a href="#cta" class="nav-cta">Забронировать</a>
-  <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
-</nav>
-
-<!-- ================= HERO ================= -->
-<section id="hero" style="padding:0">
-  <div class="hero-media">
-    <video autoplay muted loop playsinline poster="assets/img/hero-krabi-bay.jpg">
-      <source src="assets/video/hero-chiangmai-temple.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <span class="hero-tag">Авторский тур · 8 дней · Таиланд</span>
-    <h1 class="hero-title">Бангкок, Чиангмай,<br>Краби. <span class="acc">Настоящая Азия.</span></h1>
-    <p class="hero-sub">Храмы в тумане над горами Севера. Лодка сквозь известняковые скалы Андаманского моря. Уличная еда, которую невозможно найти по путеводителям.</p>
-    <div class="hero-actions">
-      <a href="#pricing" class="btn-p">Смотреть пакеты</a>
-      <a href="#journey" class="btn-g">Программа по дням</a>
+    <!-- Sticky Mobile CTA -->
+    <div id="sticky-cta" class="fixed bottom-0 left-0 w-full z-50 bg-[#000000]/90 backdrop-blur-md border-t border-brand-border p-3 transform translate-y-full transition-transform duration-300 md:hidden">
+        <a href="#tariffs" class="w-full flex items-center justify-center text-center py-3 rounded-xl btn-gradient text-xs font-bold uppercase shadow-lg text-white">Собрать своего агента — 50 000₽</a>
     </div>
-  </div>
-  <div class="hero-scroll">
-    <span class="hero-scroll-lbl">Листать</span>
-    <div class="scroll-bar"></div>
-  </div>
-</section>
 
-<!-- ================= STATS ================= -->
-<div class="stats-bar">
-  <div class="stat"><div class="stat-n">8</div><div class="stat-l">Дней</div></div>
-  <div class="stat"><div class="stat-n">4</div><div class="stat-l">Города</div></div>
-  <div class="stat"><div class="stat-n">15+</div><div class="stat-l">Локаций</div></div>
-  <div class="stat"><div class="stat-n">900+</div><div class="stat-l">км пути</div></div>
-  <div class="stat"><div class="stat-n">1</div><div class="stat-l">Объект ЮНЕСКО</div></div>
-  <div class="stat"><div class="stat-n">★★★★★</div><div class="stat-l">Оценки туристов</div></div>
-</div>
+    <!-- 1. HERO -->
+    <header id="hero" class="relative min-h-[92vh] flex items-center justify-center pt-20 pb-12 overflow-hidden">
+        <div class="absolute inset-0 bg-hero-glow"></div>
+        <div class="absolute top-1/4 -left-20 w-72 h-72 bg-brand-aiViolet rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-pulse"></div>
+        <div class="absolute bottom-1/4 -right-20 w-72 h-72 bg-brand-aiCyan rounded-full mix-blend-screen filter blur-[120px] opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
 
-<!-- ================= CITY CARDS ================= -->
-<div class="city-cards-wrap">
-  <span class="eyebrow rv">Маршрут в кадрах</span>
-  <div class="city-cards-grid">
-    <div class="city-card rv"><img src="assets/img/bangkok-city.jpg" alt="Бангкок"><div class="city-card-overlay"></div><div class="city-card-name">Бангкок</div></div>
-    <div class="city-card rv d1"><img src="assets/img/ayutthaya-city.jpg" alt="Аюттхая"><div class="city-card-overlay"></div><div class="city-card-name">Аюттхая</div></div>
-    <div class="city-card rv d2"><img src="assets/img/chiangmai-city.jpg" alt="Чиангмай"><div class="city-card-overlay"></div><div class="city-card-name">Чиангмай</div></div>
-    <div class="city-card rv d3"><img src="assets/img/krabi-city.jpg" alt="Краби"><div class="city-card-overlay"></div><div class="city-card-name">Краби</div></div>
-  </div>
-</div>
+        <div class="container mx-auto px-4 relative z-10 max-w-6xl">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-up">
+                    <span class="inline-block py-1.5 px-4 rounded-full border border-white/10 bg-[#121212] text-xs font-semibold tracking-wider uppercase mb-6 text-gray-300 shadow-xl">
+                        <span class="w-2 h-2 rounded-full bg-brand-aiGreen inline-block mr-2 animate-pulse"></span> воркшоп · 3 дня практики
+                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-white">
+                        Собери себе <span class="text-gradient">автономного ИИ-агента</span>, который работает вместо отдела
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed">
+                        Продюсер, маркетолог, программист и дизайнер — в одном агенте на твоём сервере. Пишет код, ведёт соцсети, исследует конкурентов, помнит контекст годами. Три дня установки — и дальше он твой навсегда.
+                    </p>
 
-<!-- ================= ROUTE ================= -->
-<section id="route">
-  <div class="route-grid">
-    <div>
-      <span class="eyebrow rv">Маршрут</span>
-      <h2 class="h2 rv">8 дней — <span class="acc">что вас ждёт</span></h2>
-      <p class="route-desc rv">Юг и Север Таиланда в одном маршруте: имперский Бангкок и руины древней столицы, горные храмы Чиангмая, острова и скалы Краби. Без утомительных перелётов внутри страны — только логичные переезды.</p>
-    </div>
-    <div>
-      <div class="city-list rv">
-        <div class="city-row"><span class="city-dot"></span>Бангкок<span class="city-days">1–2</span></div>
-        <div class="city-row"><span class="city-dot"></span>Аюттхая<span class="city-days">3</span></div>
-        <div class="city-row"><span class="city-dot"></span>Чиангмай<span class="city-days">4–5</span></div>
-        <div class="city-row"><span class="city-dot"></span>Краби<span class="city-days">6–7</span></div>
-        <div class="city-row"><span class="city-dot"></span>Вылет домой<span class="city-days">8</span></div>
-      </div>
-      <div class="map-wrap rv" style="margin-top:2rem;aspect-ratio:4/5;position:relative;padding:0;overflow:hidden">
-        <img src="assets/img/grand-palace.jpg" alt="Маршрут" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35">
-        <span style="position:relative;z-index:1;background:rgba(0,0,0,.55);padding:.6rem 1.2rem">Карта маршрута — вставить свою схему</span>
-      </div>
-    </div>
-  </div>
-</section>
+                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                        <a href="#tariffs" class="px-8 py-4 rounded-xl font-bold btn-gradient shadow-[0_4px_20px_rgba(124,58,237,0.3)] hover:shadow-[0_4px_25px_rgba(124,58,237,0.5)] transition-all flex items-center justify-center gap-2 text-white">
+                            Собрать своего агента
+                        </a>
+                        <a href="#timeline" class="px-8 py-4 rounded-xl font-bold bg-[#121212] border border-[#262626] hover:bg-[#262626] transition-all flex items-center justify-center gap-2 text-white">
+                            Смотреть программу
+                        </a>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-6 opacity-70">50 000₽ разово · поддержка агента дальше — 3-5 тыс.₽/мес</p>
+                </div>
 
-<!-- ================= ITINERARY ================= -->
-<section id="journey">
-  <div class="itin-head">
-    <span class="eyebrow rv">Программа</span>
-    <h2 class="h2 rv">День за <span class="acc">днём</span></h2>
-  </div>
-  <div class="days" id="days"></div>
-</section>
-
-<!-- ================= HIGHLIGHT ================= -->
-<section id="highlight">
-  <div class="hl-bg-img"><img src="assets/img/doi-suthep.jpg" alt="Дой Сутхеп"></div>
-  <div class="hl-inner">
-    <span class="eyebrow rv">Особый день</span>
-    <p class="hl-quote rv"><strong>Рассвет над горными храмами Чиангмая</strong> — тишина, туман в долине и звон колоколов <span class="o">Дой Сутхеп</span>, пока город внизу ещё спит.</p>
-    <div class="hl-cap rv">День 5 — Чиангмай, храмовая гора</div>
-    <div class="hl-feats rv">
-      <div class="hl-feat"><span class="hl-dot"></span>Подъём до рассвета с гидом</div>
-      <div class="hl-feat"><span class="hl-dot"></span>Смотровая площадка без туристических толп</div>
-      <div class="hl-feat"><span class="hl-dot"></span>Завтрак с видом на долину</div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FOOD ================= -->
-<section id="food">
-  <span class="eyebrow rv">Кухня</span>
-  <h2 class="h2 rv">Каждый регион — <span class="acc">свой вкус</span></h2>
-  <p class="food-intro rv">Пад тай в Бангкоке, кхао сой на Севере, свежие морепродукты на юге Краби. Таиланд в одном маршруте — от уличных лотков до рыбацких деревень.</p>
-  <div class="food-grid">
-    <div class="fc rv"><div class="fc-img"><img src="assets/img/food-padthai.jpg"></div><div class="fc-body"><h4>Пад тай — Бангкок</h4><p>Жареная рисовая лапша с креветками и арахисом. Уличная классика на каждом углу.</p></div></div>
-    <div class="fc rv d1"><div class="fc-img"><img src="assets/img/food-khaosoi.jpg"></div><div class="fc-body"><h4>Кхао сой — Чиангмай</h4><p>Кокосовый карри-суп с хрустящей лапшой. Главное блюдо северной кухни.</p></div></div>
-    <div class="fc rv d2"><div class="fc-img"><img src="assets/img/food-seafood.jpg"></div><div class="fc-body"><h4>Морепродукты Краби</h4><p>Кальмары и крабы прямо с лодки рыбацкой деревни на закате.</p></div></div>
-    <div class="fc rv d3"><div class="fc-img"><img src="assets/img/food-mango.jpg"></div><div class="fc-body"><h4>Манго с рисом</h4><p>Главный тайский десерт — сладкий клейкий рис с кокосовым молоком.</p></div></div>
-    <div class="fc rv d4"><div class="fc-img"><img src="assets/img/food-tea.jpg"></div><div class="fc-body"><h4>Тайский чай</h4><p>Крепкий чёрный чай со сгущённым молоком со льдом — спасение в жару.</p></div></div>
-  </div>
-</section>
-
-<!-- ================= SAFETY ================= -->
-<section id="safety">
-  <div class="safe-grid">
-    <div>
-      <span class="eyebrow rv">Гарантии</span>
-      <h2 class="h2 rv">Вы под <span class="acc">защитой</span></h2>
-      <ul class="safe-list rv">
-        <li><span class="safe-ico">✦</span>Куратор на маршруте от первого до последнего дня</li>
-        <li><span class="safe-ico">✦</span>Менеджер на связи 24/7 — любой вопрос решается немедленно</li>
-        <li><span class="safe-ico">✦</span>Все отели проверены лично: без компромиссов по качеству</li>
-        <li><span class="safe-ico">✦</span>Официальный договор — юридическая защита поездки</li>
-        <li><span class="safe-ico">✦</span>Все переезды между городами организованы заранее</li>
-      </ul>
-    </div>
-    <div class="safe-badge rv">
-      <div class="badge-n">100%</div><div class="badge-l">довольных клиентов</div>
-      <div class="badge-sep"></div>
-      <div class="badge-n">24/7</div><div class="badge-l">поддержка и связь</div>
-      <div class="badge-sep"></div>
-      <div class="badge-n">★★★★★</div><div class="badge-l">оценки туристов</div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PRICING ================= -->
-<section id="pricing">
-  <div class="price-intro">
-    <span class="eyebrow rv">Пакеты</span>
-    <h2 class="h2 rv">Выберите <span class="acc">свой формат</span></h2>
-    <p class="rv">Сначала — 8 дней впечатлений. Потом — цена. Три формата под разный уровень комфорта.</p>
-  </div>
-  <div class="price-grid">
-    <div class="pc rv">
-      <div class="pc-name">Light</div>
-      <div class="pc-sub">Для самостоятельных путешественников с экспертной поддержкой</div>
-      <div class="pc-price">$990</div>
-      <div class="pc-per">с человека</div>
-      <div class="pc-div"></div>
-      <ul class="pc-feats">
-        <li><span class="chk">✦</span>Полный маршрут под контролем куратора</li>
-        <li><span class="chk">✦</span>Все экскурсии и активности</li>
-        <li><span class="chk">✦</span>Входные билеты во все локации</li>
-        <li><span class="chk">✦</span>Менеджер 24/7 на связи</li>
-        <li><span class="chk">✦</span>Официальный договор</li>
-        <li><span class="crs">—</span>Проживание (самостоятельно)</li>
-        <li><span class="crs">—</span>Трансферы между городами</li>
-      </ul>
-      <a href="#cta" class="pc-btn outline">Выбрать Light</a>
-    </div>
-    <div class="pc feat rv d1">
-      <span class="pc-popular">Популярный выбор</span>
-      <div class="pc-name">Full</div>
-      <div class="pc-sub">Мы организуем всё — вы наслаждаетесь</div>
-      <div class="pc-price">$1290</div>
-      <div class="pc-per">с человека</div>
-      <div class="pc-div"></div>
-      <ul class="pc-feats">
-        <li><span class="chk">✦</span>Все экскурсии и гид</li>
-        <li><span class="chk">✦</span>Все входные билеты</li>
-        <li><span class="chk">✦</span>Все трансферы между городами</li>
-        <li><span class="chk">✦</span>Отели 3*+ во всех городах</li>
-        <li><span class="chk">✦</span>Менеджер 24/7</li>
-        <li><span class="chk">✦</span>Официальный договор</li>
-        <li><span class="crs">—</span>Международные авиабилеты</li>
-      </ul>
-      <a href="#cta" class="pc-btn solid">Выбрать Full</a>
-    </div>
-    <div class="pc rv d2">
-      <div class="pc-name">VIP</div>
-      <div class="pc-sub">Максимальный комфорт на каждом этапе</div>
-      <div class="pc-price">$1690</div>
-      <div class="pc-per">с человека</div>
-      <div class="pc-div"></div>
-      <ul class="pc-feats">
-        <li><span class="chk">✦</span>Всё из пакета Full</li>
-        <li><span class="chk">✦</span>Отели 4–5★</li>
-        <li><span class="chk">✦</span>Индивидуальное авто на трансферах</li>
-        <li><span class="chk">✦</span>Ужины в ресторанах европейского уровня</li>
-        <li><span class="chk">✦</span>Максимальное внимание к пожеланиям</li>
-      </ul>
-      <a href="#cta" class="pc-btn outline">Выбрать VIP</a>
-    </div>
-  </div>
-  <p class="price-note rv">Цена указана за человека при группе от 2 человек. Город вылета/прилёта — по договорённости, цена может измениться.</p>
-</section>
-
-<!-- ================= REVIEWS ================= -->
-<section id="reviews">
-  <span class="eyebrow rv">Отзывы</span>
-  <h2 class="h2 rv">Что говорят <span class="acc">наши гости</span></h2>
-  <div class="rv-rating rv">
-    <span class="rv-stars">★★★★★</span><span class="rv-score">4.8 из 5</span><span class="rv-count">— демо-отзывы для учебного сайта, не настоящие клиенты</span>
-  </div>
-  <div class="reviews-grid">
-    <div class="rvc rv">
-      <p class="rvc-quote">«Гид встретил прямо у выхода из аэропорта — никакой суеты с языком и такси. Дой Сутхеп на рассвете — то, ради чего стоило лететь.»</p>
-      <div class="rvc-author"><div class="rvc-avatar">ИМ</div><div><div class="rvc-name">Ирина М.</div><div class="rvc-meta">Пакет Full · Бангкок — Чиангмай</div></div></div>
-    </div>
-    <div class="rvc rv d1">
-      <p class="rvc-quote">«Боялись перелётов внутри страны — оказалось, всё продумано, никаких нервных пересадок. Краби вообще отдельная любовь, лодка вдоль скал Райли — как в кино.»</p>
-      <div class="rvc-author"><div class="rvc-avatar">СК</div><div><div class="rvc-name">Семья Ковалёвых</div><div class="rvc-meta">Пакет VIP · весь маршрут</div></div></div>
-    </div>
-    <div class="rvc rv d2">
-      <p class="rvc-quote">«Ели пад тай прямо у лотка, куда нас привёл гид — не тот вариант "для туристов", который сама бы никогда не нашла. Кухня — отдельный повод ехать снова.»</p>
-      <div class="rvc-author"><div class="rvc-avatar">ДН</div><div><div class="rvc-name">Дарья Н.</div><div class="rvc-meta">О гастрономии · Бангкок</div></div></div>
-    </div>
-    <div class="rvc rv d3">
-      <p class="rvc-quote">«Менеджер реально был на связи 24/7 — писала в 11 вечера с глупым вопросом про адаптер, ответили за пару минут. Мелочь, а спокойствие даёт.»</p>
-      <div class="rvc-author"><div class="rvc-avatar">АП</div><div><div class="rvc-name">Андрей П.</div><div class="rvc-meta">О сервисе · Пакет Light</div></div></div>
-    </div>
-    <div class="rvc rv d4">
-      <p class="rvc-quote">«Аюттхая с головой Будды в корнях дерева поразила больше, чем ожидала — фото не передают масштаб. День без спешки, гид рассказывал долго и с удовольствием.»</p>
-      <div class="rvc-author"><div class="rvc-avatar">ЕВ</div><div><div class="rvc-name">Елена В.</div><div class="rvc-meta">О программе · Аюттхая</div></div></div>
-    </div>
-    <div class="rvc rv d5">
-      <p class="rvc-quote">«Отель в Краби был прямо на пляже, как обещали — никакого "пять минут пешком", про которые потом узнаёшь, что это пять минут на машине.»</p>
-      <div class="rvc-author"><div class="rvc-avatar">МТ</div><div><div class="rvc-name">Максим Т.</div><div class="rvc-meta">О проживании · Краби</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CTA ================= -->
-<section id="cta">
-  <div class="cta-in">
-    <h2 class="cta-title rv">Забронируйте<br><span style="color:var(--orange)">своё место</span></h2>
-    <p class="cta-sub rv">Напишите нам — ответим быстро, расскажем детали и поможем выбрать формат. Группы от 2 человек. Даты по договорённости.</p>
-    <a href="https://t.me/asian_wanderer_tours" class="btn-p rv" target="_blank">Написать в Telegram</a>
-    <div class="cta-links rv">
-      <a href="https://instagram.com/asian_wanderer_tours" class="cta-link" target="_blank"><span>📱</span> Instagram</a>
-      <a href="https://t.me/asian_wanderer_tours" class="cta-link" target="_blank"><span>✈</span> Telegram</a>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer>
-  <div class="fl">Азиатский <span>Странник</span></div>
-  <div class="fc2">© 2026 Азиатский Странник · Все права защищены</div>
-</footer>
-
-<script>
-// Nav scroll state
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
-
-// Mobile burger
-document.getElementById('burger').addEventListener('click', () => nav.classList.toggle('menu-open'));
-
-// Reveal on scroll
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
-}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
-
-// ── Day data — замени на свою программу ──────────────────────────────
-const DAYS = [
-  {num:1,title:'Прилёт в Бангкок',loc:'Бангкок',
-   desc:'Встреча в аэропорту, приватный трансфер в отель. Свободный вечер — можно выйти к ночным рынкам Патпонга или на набережную Чао Прайя.',
-   check:['Ночной рынок и уличная еда','Набережная Чао Прайя','Заселение в отель в центре'],
-   tags:['Трансфер из аэропорта','Заселение в отель']},
-  {num:2,title:'Храмы и дворцы Бангкока',loc:'Бангкок',
-   desc:'Полный день по главным храмам столицы: Большой дворец, Ват Пхо с лежащим Буддой, Ват Арун на закате.',
-   check:['Большой дворец','Ват Пхо (лежащий Будда)','Ват Арун на закате'],
-   tags:['Гид на весь день','Входные билеты']},
-  {num:3,title:'Древняя столица Аюттхая',loc:'Аюттхая',
-   desc:'Выезд к руинам древней столицы Сиама — объекту ЮНЕСКО. Голова Будды, оплетённая корнями дерева, и разрушенные ступы среди зелени.',
-   check:['Ват Махатхат','Голова Будды в корнях дерева','Ват Ясан Тхон'],
-   tags:['Объект ЮНЕСКО','Day trip из Бангкока']},
-  {num:4,title:'Перелёт на Север, Чиангмай',loc:'Чиангмай',
-   desc:'Перелёт в Чиангмай. Вечером — прогулка по Старому городу и ночной рынок с местными ремёслами.',
-   check:['Старый город','Ночной рынок Чиангмая'],
-   tags:['Внутренний перелёт','Свободный вечер']},
-  {num:5,title:'Рассвет на храмовой горе',loc:'Чиангмай',
-   desc:'Ранний подъём к храму Дой Сутхеп — смотровая площадка над долиной, пока туристические автобусы ещё не приехали.',
-   check:['Дой Сутхеп на рассвете','Завтрак с видом на долину','Деревня ремесленников'],
-   tags:['Особый день'], hot:true},
-  {num:6,title:'Перелёт на юг, Краби',loc:'Краби',
-   desc:'Перелёт на юг к Андаманскому морю. Заселение у пляжа, вечер свободный — можно встретить закат на смотровой Краби-тауна.',
-   check:['Смотровая Краби-тауна','Свободный вечер у моря'],
-   tags:['Внутренний перелёт']},
-  {num:7,title:'Острова и скалы Краби',loc:'Краби',
-   desc:'Лодочный тур по островам: скалы Райли, пляж Прананг, снорклинг у Чикен-Айленда, ужин в рыбацкой деревне.',
-   check:['Скалы Райли','Снорклинг у Чикен-Айленда','Ужин в рыбацкой деревне'],
-   tags:['Лодочный тур','Снорклинг']},
-  {num:8,title:'Вылет домой',loc:'Краби',
-   desc:'Свободное утро, трансфер в аэропорт по расписанию вашего рейса.',
-   check:['Свободное утро','Трансфер в аэропорт'],
-   tags:['Трансфер в аэропорт']},
-];
-
-function renderDays(){
-  const wrap = document.getElementById('days');
-  wrap.innerHTML = DAYS.map(d => `
-    <div class="day" data-num="${d.num}">
-      <div class="day-hd" onclick="toggleDay(${d.num})">
-        <span class="day-no">День ${d.num}</span>
-        <span class="day-ti">${d.title}</span>
-        <span class="day-loc">${d.loc}</span>
-        <span class="day-arr">▾</span>
-      </div>
-      <div class="day-body">
-        <div class="day-inner">
-          <p>${d.desc}</p>
-          <div class="tags">${d.check.map(c => `<span class="tag">${c}</span>`).join('')}</div>
-          <div class="tags">${d.tags.map(t => `<span class="tag hot">${t}</span>`).join('')}</div>
+                <!-- Telegram mockup -->
+                <div data-aos="fade-left" data-aos-delay="150">
+                    <div class="tg-window shadow-2xl max-w-md mx-auto">
+                        <div class="flex items-center gap-3 px-4 py-3 border-b border-[#26323f] bg-[#17212b]">
+                            <div class="w-9 h-9 rounded-full bg-ai-gradient flex items-center justify-center font-bold text-sm">Д</div>
+                            <div>
+                                <div class="font-semibold text-white text-sm">Джарвис</div>
+                                <div class="text-[11px] text-brand-aiGreen">в сети</div>
+                            </div>
+                        </div>
+                        <div class="p-4 space-y-3 font-mono text-[13px]">
+                            <div class="tg-bubble-out px-3 py-2 max-w-[85%] ml-auto">Проанализируй топ-5 Reels у конкурента и сделай ТЗ монтажёру</div>
+                            <div class="tg-bubble-in px-3 py-2 max-w-[85%]">Скачал 30 роликов, отобрал топ-5 по просмотрам. Транскрибирую и разбираю хук/структуру/CTA…</div>
+                            <div class="tg-bubble-in px-3 py-2 max-w-[85%] flex gap-1">
+                                <span class="typing-dot">●</span><span class="typing-dot">●</span><span class="typing-dot">●</span>
+                            </div>
+                            <div class="tg-bubble-in px-3 py-2 max-w-[85%]">Готово. HTML-отчёт с таймкодами и текстом телесуфлёра — отправляю файлом.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  `).join('');
-}
-function toggleDay(num){
-  document.querySelectorAll('.day').forEach(el => {
-    if (Number(el.dataset.num) === num) el.classList.toggle('open');
-    else el.classList.remove('open');
-  });
-}
-renderDays();
-document.querySelector('.day').classList.add('open');
-</script>
+    </header>
+
+    <!-- 2. CONTRAST BLOCK -->
+    <section id="why" class="py-20 relative">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16" data-aos="fade-up">
+                Нанимать отдел из четырёх человек — <span class="text-gradient">или один агент, который не спит</span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass rounded-3xl p-8" data-aos="fade-right">
+                    <div class="flex items-center gap-3 mb-6 opacity-60">
+                        <span class="text-2xl">🧑‍🤝‍🧑</span>
+                        <h3 class="text-xl font-semibold text-gray-400">Нанимать людей</h3>
+                    </div>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex gap-3">✕ <span>SMM-фрилансер — от 30 до 100+ тыс.₽/мес (рыночная цена)</span></li>
+                        <li class="flex gap-3">✕ <span>Отдельно программист, отдельно дизайнер — свой чек на каждого</span></li>
+                        <li class="flex gap-3">✕ <span>Отпуска, больничные, «забыл», текучка — и снова обучать нового</span></li>
+                        <li class="flex gap-3">✕ <span>Координация между всеми съедает время быстрее, чем экономит</span></li>
+                    </ul>
+                </div>
+
+                <div class="glass rounded-3xl p-8 relative overflow-hidden" style="border: 1px solid #7C3AED55;" data-aos="fade-left">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-aiViolet/10 blur-[50px] rounded-full"></div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-2xl">⚡</span>
+                        <h3 class="text-2xl font-bold text-white">Джарвис</h3>
+                    </div>
+                    <ul class="space-y-4 text-gray-200 font-medium relative z-10">
+                        <li class="flex gap-3">✓ <span>50 000₽ разово + 3-5 тыс.₽/мес поддержки — и всё</span></li>
+                        <li class="flex gap-3">✓ <span>Продюсер, маркетолог, программист и дизайнер — сразу все роли</span></li>
+                        <li class="flex gap-3">✓ <span>Работает 24/7, помнит весь контекст, не выгорает</span></li>
+                        <li class="flex gap-3">✓ <span>Сам исполняет: пишет код, деплоит, публикует, чинит себя</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center text-gray-400 text-lg" data-aos="fade-up">
+                Свой сервер, а не место в чужом SaaS. <span class="text-white font-semibold border-b border-brand-aiViolet pb-1">Цена не растёт вместе с объёмом задач.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. TIMELINE -->
+    <section id="timeline" class="py-20 bg-[#121212]/50">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16" data-aos="fade-up">
+                4 дня <span class="text-gradient">шаг за шагом</span>
+            </h2>
+
+            <div class="relative max-w-4xl mx-auto">
+                <div class="absolute left-[19px] md:left-1/2 top-0 bottom-0 w-[2px] bg-[#262626] md:-translate-x-1/2"></div>
+
+                <!-- День 0 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between mb-12 group">
+                    <div class="hidden md:block md:w-[45%]"></div>
+                    <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full bg-[#121212] border-4 border-[#000000] text-brand-aiCyan flex items-center justify-center z-10 md:-translate-x-1/2 font-bold shadow-[0_0_15px_rgba(0,217,255,0.3)] transition-transform group-hover:scale-110">0</div>
+                    <div class="w-full md:w-[45%] pl-16 md:pl-0 md:pr-12 text-left md:text-right" data-aos="fade-right">
+                        <div class="glass p-6 rounded-2xl hover:border-brand-aiCyan/50 transition-colors text-left inline-block w-full">
+                            <div class="text-brand-aiCyan font-bold text-sm mb-1 uppercase tracking-wider">День 0</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Подготовка</h3>
+                            <p class="text-gray-400">Аккаунт Anthropic (Pro/Max), ровный цифровой след, арендованный сервер (VPS) в Европе. Всё техническое готово к установке.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- День 1 -->
+                <div class="relative flex flex-col md:flex-row-reverse items-center justify-between mb-12 group">
+                    <div class="hidden md:block md:w-[45%]"></div>
+                    <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full bg-[#121212] border-4 border-[#000000] text-brand-aiViolet flex items-center justify-center z-10 md:-translate-x-1/2 font-bold shadow-[0_0_15px_rgba(124,58,237,0.3)] transition-transform group-hover:scale-110">1</div>
+                    <div class="w-full md:w-[45%] pl-16 md:pl-12 text-left" data-aos="fade-left">
+                        <div class="glass p-6 rounded-2xl hover:border-brand-aiViolet/50 transition-colors w-full">
+                            <div class="text-brand-aiViolet font-bold text-sm mb-1 uppercase tracking-wider">День 1</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Установка и первый диалог</h3>
+                            <p class="text-gray-400">Инсталлер разворачивает агента на сервере. Два бота в Telegram — Джарвис (основной) и Richard (страховка на случай сбоя). Оба отвечают к концу дня.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- День 2 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between mb-12 group">
+                    <div class="hidden md:block md:w-[45%]"></div>
+                    <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full bg-[#121212] border-4 border-[#000000] text-brand-aiMagenta flex items-center justify-center z-10 md:-translate-x-1/2 font-bold shadow-[0_0_15px_rgba(236,72,153,0.3)] transition-transform group-hover:scale-110">2</div>
+                    <div class="w-full md:w-[45%] pl-16 md:pl-0 md:pr-12 text-left md:text-right" data-aos="fade-right">
+                        <div class="glass p-6 rounded-2xl hover:border-brand-aiMagenta/50 transition-colors text-left inline-block w-full">
+                            <div class="text-brand-aiMagenta font-bold text-sm mb-1 uppercase tracking-wider">День 2</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Авторская настройка памяти</h3>
+                            <p class="text-gray-400">Слои памяти, авто-ротация, подключение семантической памяти. Агент помнит контекст между сессиями — не забывает, кто ты и что вы уже обсуждали.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- День 3 -->
+                <div class="relative flex flex-col md:flex-row-reverse items-center justify-between group">
+                    <div class="hidden md:block md:w-[45%]"></div>
+                    <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full bg-[#121212] border-4 border-[#000000] text-brand-aiCyan flex items-center justify-center z-10 md:-translate-x-1/2 font-bold shadow-[0_0_15px_rgba(0,217,255,0.3)] transition-transform group-hover:scale-110">3</div>
+                    <div class="w-full md:w-[45%] pl-16 md:pl-12 text-left" data-aos="fade-left">
+                        <div class="glass p-6 rounded-2xl hover:border-brand-aiCyan/50 transition-colors w-full">
+                            <div class="text-brand-aiCyan font-bold text-sm mb-1 uppercase tracking-wider">День 3</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Скиллы под твои задачи</h3>
+                            <p class="text-gray-400">Границы агента (что делает сам, что спрашивает) и первый боевой навык под реальную задачу — например, разбор Reels конкурентов или YouTube-продюсирование. Дальше добавляешь новые скиллы сам.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-16" data-aos="zoom-in">
+                <a href="#tariffs" class="inline-flex px-8 py-4 rounded-xl font-bold btn-gradient shadow-lg text-white">Смотреть тариф</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. AUTHORITY / META-PROOF -->
+    <section id="proof" class="py-20 relative overflow-hidden">
+        <div class="container mx-auto px-4 max-w-5xl relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16" data-aos="fade-up">
+                Это не теория — <span class="text-gradient">это уже так работает</span>
+            </h2>
+
+            <div class="glass p-8 md:p-10 rounded-3xl bg-[#0a0a0a] mb-16 border-l-4" style="border-left-color: #7C3AED;" data-aos="fade-up">
+                <p class="text-gray-300 text-lg mb-4">
+                    Этот текст, этот лендинг и его публикация на сервере — сделаны и выложены агентом, собранным по этой же методике. Не скриншот, не рендер обещаний — рабочий инструмент, который в момент чтения этой страницы уже отвечает в Telegram.
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-6 items-start glass p-8 rounded-3xl bg-[#0a0a0a]" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative shrink-0">
+                    <img src="assets/img/gromov.jpg" alt="Громов" class="w-28 h-28 rounded-full border-2 border-brand-aiCyan object-cover shadow-[0_0_20px_rgba(0,217,255,0.3)]">
+                </div>
+                <div>
+                    <h3 class="text-3xl font-extrabold text-white mb-3">Громов</h3>
+                    <div class="inline-flex items-center px-3 py-1 rounded-lg bg-brand-aiCyan/10 text-brand-aiCyan font-semibold text-sm mb-4">@ai_gromov</div>
+                    <div class="text-gray-400 text-sm leading-relaxed space-y-2">
+                        <p>Математик-программист, управленец. Более 20 лет топ-менеджер: «Авторадио Тверь», «Европа плюс Тверская область», РИА «Верхневолжье». Экс генеральный директор медиахолдинга на 100+ человек.</p>
+                        <p>Автор системы «ТурбоРилс». Ведёт этот же сервер, где уже месяцы работают собственные автономные агенты — на бизнесе, маркетинге и контенте.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. AUDIENCE + OFFER FOR TURBOREELS GRADUATES -->
+    <section id="audience" class="py-20 bg-[#121212]/50">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16" data-aos="fade-up">Для кого этот воркшоп</h2>
+
+            <div class="glass p-8 md:p-10 rounded-3xl bg-[#0a0a0a] mb-16 relative border-l-4" style="border-left-color: #00D9FF;" data-aos="fade-up">
+                <div class="inline-block py-1 px-3 rounded-full bg-brand-aiCyan/10 text-brand-aiCyan text-xs font-bold uppercase tracking-wider mb-4">Если ты уже прошёл ТурбоРилс</div>
+                <p class="text-gray-300 text-lg mb-4">
+                    Систему трафика ты уже поставил. Охваты идут. Но затык давно не в подписчиках, а в твоём личном времени: ресёрч доноров, нейроописания, сценарии по таблице, мониторинг конкурентов, ответы в Директ.
+                </p>
+                <p class="text-gray-400 leading-relaxed">
+                    Это и есть тот самый следующий шаг, который курс называет прямым текстом — «продюсерский отдел на ИИ». Три дня — и агент сам скачивает топ-Reels конкурентов, транскрибирует, вытаскивает хук и структуру, выдаёт готовое ТЗ монтажёру, мониторит тренды и пишет тебе сам, если что-то произошло. Дальше он твой навсегда — доращивай под любую следующую задачу без нового курса и нового специалиста.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass p-6 rounded-2xl bg-[#0a0a0a]" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-3xl mb-4">📹</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Блогеры и эксперты</h3>
+                    <p class="text-gray-400 text-sm">Уже раскачали Instagram — переводят контент-конвейер на агента и освобождают себе время.</p>
+                </div>
+                <div class="glass p-6 rounded-2xl bg-[#0a0a0a]" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-3xl mb-4">💼</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Предприниматели</h3>
+                    <p class="text-gray-400 text-sm">Закрывают одним агентом задачи, под которые раньше нанимали нескольких отдельных людей.</p>
+                </div>
+                <div class="glass p-6 rounded-2xl bg-[#0a0a0a]" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-3xl mb-4">🛠️</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Фрилансеры / SMM</h3>
+                    <p class="text-gray-400 text-sm">Обслуживают больше клиентов без найма команды — агент берёт рутину на себя.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. TARIFFS -->
+    <section id="tariffs" class="py-20 relative">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-aiViolet/10 via-black to-black"></div>
+        <div class="container mx-auto px-4 max-w-3xl relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-6" data-aos="fade-up">Стоимость</h2>
+            <p class="text-center text-gray-400 mb-16 max-w-xl mx-auto" data-aos="fade-up">Разовая установка. Дальше — только подписка Claude и сервер, обычно 3-5 тыс.₽/мес.</p>
+
+            <div class="max-w-md mx-auto">
+                <div class="glass bg-[#0a0a0a] rounded-3xl p-8 flex flex-col relative shadow-[0_0_40px_rgba(124,58,237,0.25)]" style="border: 2px solid #7C3AED;" data-aos="zoom-in">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 btn-gradient text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg whitespace-nowrap uppercase tracking-wider">
+                        Воркшоп «Джарвис»
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-6 mt-4 text-center">3 дня установки под руководством по шагам</h3>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Пошаговые промпты на каждый день — вставляешь и агент сам ведёт дальше</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Работающий агент в Telegram + страховка Richard</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Настроенная память, которая не забывает контекст</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Минимум один свой боевой скилл под реальную задачу</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Все будущие обновления курса — бесплатно</li>
+                    </ul>
+                    <div class="text-4xl font-extrabold text-white mb-2 text-center">50 000₽</div>
+                    <div class="text-xs text-gray-500 text-center mb-6">+ ~3-5 тыс.₽/мес поддержки агента дальше</div>
+                    <a href="https://t.me/ai_gromov_bot" target="_blank" rel="noopener noreferrer" class="w-full text-center py-4 rounded-xl btn-gradient font-bold shadow-lg text-white">Написать и забронировать место</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section id="faq" class="py-20 bg-[#121212]/50">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12" data-aos="fade-up">Ответы на вопросы</h2>
+
+            <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+                <details class="glass bg-[#0a0a0a] rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
+                        Нужно ли уметь программировать?
+                        <span class="text-gray-400">⌄</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">Нет. Каждый день воркшопа — готовые команды и промпты, которые ты просто вставляешь по порядку. Агент проводит тебя дальше сам, вручную ты делаешь только шаги с оплатой и токенами.</div>
+                    </div>
+                </details>
+
+                <details class="glass bg-[#0a0a0a] rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
+                        А что если сервер упадёт или агент сломается?
+                        <span class="text-gray-400">⌄</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">На это и стоит второй агент — Richard. Он молчит, пока всё работает, и включается, когда основной агент падает или отвечает не так: смотрит логи и чинит сам.</div>
+                    </div>
+                </details>
+
+                <details class="glass bg-[#0a0a0a] rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
+                        Сколько времени в день занимает установка?
+                        <span class="text-gray-400">⌄</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">В среднем 2-4 часа на день — идёшь сверху вниз по материалу, вставляешь готовые команды и промпты, дожидаешься результата на каждом шаге.</div>
+                    </div>
+                </details>
+
+                <details class="glass bg-[#0a0a0a] rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
+                        Чем это лучше готового чат-бота или конструктора вроде Manychat?
+                        <span class="text-gray-400">⌄</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">Конструктор работает по заранее собранным сценариям и стоит тем дороже, чем больше у тебя сообщений и задач. Джарвис стоит на твоём сервере, помнит контекст, сам пишет и запускает код, и ты можешь бесконечно добавлять ему новые навыки — без нового тарифа и без потолка возможностей.</div>
+                    </div>
+                </details>
+
+                <details class="glass bg-[#0a0a0a] rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
+                        Могу я потом сам добавлять новые задачи агенту?
+                        <span class="text-gray-400">⌄</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">Да, это и есть смысл Дня 3 — на воркшопе ты собираешь свой первый боевой навык вместе с агентом и понимаешь принцип. Дальше повторяешь его под любую новую задачу сам.</div>
+                    </div>
+                </details>
+
+                <details class="glass bg-[#0a0a0a] rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
+                        Я уже прошёл ТурбоРилс — зачем мне это?
+                        <span class="text-gray-400">⌄</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">Трафик у тебя уже идёт. Следующее узкое место — не охваты, а твоё личное время на рутину контента. Это именно тот шаг, который сам курс называет следующим — «продюсерский отдел на ИИ».</div>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. LEAD MAGNET -->
+    <section id="ask" class="py-20">
+        <div class="container mx-auto px-4 max-w-3xl text-center">
+            <div class="glass bg-[#0a0a0a] rounded-3xl p-10 border border-[#262626] relative overflow-hidden" data-aos="zoom-in">
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Сомневаешься, где именно агент сэкономит время?</h2>
+                    <p class="text-gray-400 mb-8 text-lg leading-relaxed">
+                        Напиши в Telegram — бесплатно разберём, какие твои сегодняшние задачи можно снять с себя и передать агенту, и подходит ли тебе воркшоп.
+                    </p>
+                    <a href="https://t.me/ai_gromov_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#2AABEE] text-white font-bold hover:bg-[#2298D6] transition-colors mb-3 shadow-[0_0_20px_rgba(42,171,238,0.3)] hover:shadow-[0_0_25px_rgba(42,171,238,0.5)]">
+                        Написать в Telegram
+                    </a>
+                    <div class="text-[10px] text-gray-500 uppercase tracking-widest">Без рекламы, без спама — просто разбор</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 bg-[#000000] text-[#71717a] text-sm font-medium">
+        <div class="container mx-auto px-4 max-w-[1200px]">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+                <div class="flex items-center gap-2 text-[#71717a] font-bold tracking-widest uppercase text-[10px] md:text-xs">
+                    © 2026 TR6 · Джарвис — автономный ИИ-агент
+                </div>
+            </div>
+            <div class="text-center text-xs opacity-60 font-normal">
+                Договор-оферта и реквизиты предоставляются перед оплатой
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+
+        const stickyCta = document.getElementById('sticky-cta');
+        const heroSection = document.getElementById('hero');
+        window.addEventListener('scroll', () => {
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            if (heroBottom < 0) {
+                stickyCta.classList.remove('translate-y-full');
+            } else {
+                stickyCta.classList.add('translate-y-full');
+            }
+        });
+    </script>
 </body>
 </html>
