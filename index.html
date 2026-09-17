@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- SEO & Meta -->
-    <title>Джарвис | Личный ИИ-сотрудник в твоём Telegram за 4 вечера</title>
-    <meta name="description" content="За четыре вечера у тебя в Telegram появляется агент, который делает, а не советует: пишет код, собирает и размещает сайты, ведёт контент, исследует конкурентов. Живёт на твоём сервере, помнит твои проекты годами, доучивается под любую задачу.">
-    <meta name="keywords" content="ии агент, джарвис, claude code, автоматизация, автономный агент, нейроотдел, воркшоп">
+    <title>ИИ-отдел под ключ | Собираем и ведём мы, вы ставите задачи</title>
+    <meta name="description" content="Собираем ИИ-отдел под ваш бизнес и ведём его сами. Одиннадцать ролей в одном контуре: разработка, сайты, аналитика, тексты, рассылки, поддержка клиентов. Вы ставите задачи в Telegram и получаете результат.">
+    <meta name="keywords" content="ии отдел, нейроотдел, ии агент, джарвис, автоматизация бизнеса, интеграция ии, ии сотрудник">
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="Джарвис | Личный ИИ-сотрудник в твоём Telegram">
-    <meta property="og:description" content="Четыре вечера — и агент делает работу целиком, а не советует, как её сделать.">
+    <meta property="og:title" content="ИИ-отдел под ключ | Собираем и ведём мы">
+    <meta property="og:description" content="Отдел из ИИ-сотрудников работает круглосуточно и закрывает работу одиннадцати специалистов. Вы ставите задачи, остальное на нас.">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
@@ -57,28 +57,66 @@
 
     <style>
         body {
-            background-color: #000000;
+            background-color: #0B0B18;
             color: #F8FAFC;
             overflow-x: hidden;
         }
+        /* Мягкая подсветка всего полотна, чтобы страница не читалась как чёрная */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            pointer-events: none;
+            background:
+                radial-gradient(1000px 700px at 12% -5%, rgba(124, 58, 237, 0.30), transparent 65%),
+                radial-gradient(900px 600px at 88% 8%, rgba(0, 217, 255, 0.20), transparent 62%),
+                radial-gradient(1100px 800px at 50% 105%, rgba(236, 72, 153, 0.18), transparent 68%),
+                linear-gradient(180deg, #12122A 0%, #0B0B18 55%, #14102A 100%);
+        }
 
         .glass {
-            background: rgba(18, 18, 18, 0.55);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(32, 30, 58, 0.52);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         /* Карточка приподнимается под курсором — как на tr6.ru */
         .card {
-            background: linear-gradient(145deg, rgba(30, 20, 55, 0.45) 0%, rgba(10, 10, 10, 0.8) 100%);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            background: linear-gradient(145deg, rgba(58, 46, 102, 0.55) 0%, rgba(20, 18, 38, 0.82) 100%);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
         }
         .card:hover {
             transform: translateY(-6px);
-            border-color: rgba(124, 58, 237, 0.45);
-            box-shadow: 0 18px 50px rgba(124, 58, 237, 0.18);
+            border-color: rgba(0, 217, 255, 0.50);
+            box-shadow: 0 18px 60px rgba(124, 58, 237, 0.30);
+        }
+        /* Свет идёт за курсором по карточке */
+        .card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(0, 217, 255, 0.16), transparent 55%);
+        }
+        .card:hover::after { opacity: 1; }
+
+        /* Кнопка тарифа аренды в общей гамме */
+        .btn-cyan {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.18) 0%, rgba(124, 58, 237, 0.22) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.55);
+            transition: all 0.3s ease;
+        }
+        .btn-cyan:hover {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.30) 0%, rgba(124, 58, 237, 0.34) 100%);
+            box-shadow: 0 4px 24px rgba(0, 217, 255, 0.35);
+            transform: translateY(-2px);
         }
 
         /* Липкая шапка */
@@ -119,11 +157,26 @@
             50%      { transform: perspective(1200px) rotateY(-7deg) rotateX(3deg) translateY(-12px); }
         }
 
+        /* Градиент в заголовках живой: перетекает слева направо */
         .text-gradient {
-            background: linear-gradient(to right, #00D9FF, #7C3AED, #EC4899);
+            background: linear-gradient(110deg, #00D9FF, #7C3AED, #EC4899, #00D9FF);
+            background-size: 300% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: gradient-flow 9s linear infinite;
+        }
+        @keyframes gradient-flow {
+            0%   { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .text-gradient { animation: none; }
+        }
+
+        /* Крупные цифры светятся и оживают при появлении */
+        .stat-num {
+            text-shadow: 0 0 28px rgba(0, 217, 255, 0.35);
         }
 
         .btn-gradient {
@@ -186,17 +239,17 @@
             <div class="flex justify-between items-center h-16 md:h-20">
                 <a href="#hero" class="flex items-center gap-2 shrink-0">
                     <div class="w-9 h-9 rounded-xl bg-ai-gradient flex items-center justify-center font-extrabold text-white text-sm">Д</div>
-                    <span class="font-extrabold tracking-tight text-white">Джарвис</span>
+                    <span class="font-extrabold tracking-tight text-white">ИИ-отдел</span>
                 </a>
                 <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-300">
-                    <a href="#result" class="nav-link hover:text-white">Результат</a>
-                    <a href="#day" class="nav-link hover:text-white">Один день</a>
-                    <a href="#timeline" class="nav-link hover:text-white">Программа</a>
-                    <a href="#tools" class="nav-link hover:text-white">Навыки</a>
+                    <a href="#result" class="nav-link hover:text-white">Что получаете</a>
+                    <a href="#proof" class="nav-link hover:text-white">Факты</a>
+                    <a href="#timeline" class="nav-link hover:text-white">Как работаем</a>
+                    <a href="#roles" class="nav-link hover:text-white">Роли</a>
                     <a href="#tariffs" class="nav-link hover:text-white">Тарифы</a>
                     <a href="#faq" class="nav-link hover:text-white">Вопросы</a>
                 </div>
-                <a href="#tariffs" class="px-5 py-2.5 rounded-xl btn-gradient text-white text-xs md:text-sm font-bold shadow-lg whitespace-nowrap">Собрать агента</a>
+                <a href="#tariffs" class="px-5 py-2.5 rounded-xl btn-gradient text-white text-xs md:text-sm font-bold shadow-lg whitespace-nowrap">Обсудить задачу</a>
             </div>
         </div>
     </nav>
@@ -204,7 +257,7 @@
 
     <!-- Sticky Mobile CTA -->
     <div id="sticky-cta" class="fixed bottom-0 left-0 w-full z-50 bg-[#000000]/90 backdrop-blur-md border-t border-brand-border p-3 transform translate-y-full transition-transform duration-300 md:hidden">
-        <a href="#tariffs" class="w-full flex items-center justify-center text-center py-3 rounded-xl btn-gradient text-xs font-bold uppercase shadow-lg text-white" data-price="jarvis" data-price-prefix="Собрать своего агента — от ">Собрать своего агента — от 59 990₽</a>
+        <a href="#tariffs" class="w-full flex items-center justify-center text-center py-3 rounded-xl btn-gradient text-xs font-bold uppercase shadow-lg text-white" data-price="jarvis-rent" data-price-prefix="Поставить ИИ-отдел - от ">Поставить ИИ-отдел - от 90 000₽</a>
     </div>
 
     <!-- 1. HERO -->
@@ -217,19 +270,19 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div data-aos="fade-up">
                     <span class="inline-block py-1.5 px-4 rounded-full border border-white/10 bg-[#121212] text-xs font-semibold tracking-wider uppercase mb-6 text-gray-300 shadow-xl">
-                        <span class="w-2 h-2 rounded-full bg-brand-aiGreen inline-block mr-2 animate-pulse"></span> воркшоп · 4 дня · доступ сразу после оплаты
+                        <span class="w-2 h-2 rounded-full bg-brand-aiGreen inline-block mr-2 animate-pulse"></span> интеграция · неделя до запуска · месяц сопровождения
                     </span>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-white">
-                        Через четыре вечера в твоём Telegram работает сотрудник, <span class="text-gradient">который делает, а не советует</span>
+                        ИИ-отдел под ваш бизнес. <span class="text-gradient">Собираем и ведём мы, вы ставите задачи</span>
                     </h1>
                     <p class="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed">
-                        Джарвис живёт на твоём сервере, не выключается и помнит твои проекты годами. Пишет код, собирает и публикует сайты, ведёт контент, разбирает конкурентов — и присылает готовый результат, а не советы, как его получить.
+                        Вы не устанавливаете ничего и не учитесь работать с кодом. Мы разворачиваем контур, обучаем агентов под ваши процессы и сопровождаем. Вы пишете задачу в Telegram и получаете готовый результат: сайт, бота, разбор конкурентов, тексты, отчёт.
                     </p>
 
                     <div class="flex flex-wrap items-center gap-x-3 gap-y-2 mb-8 font-mono text-xs text-gray-400">
-                        <span><span class="text-white font-bold">9 ролей</span> в одном агенте</span>
+                        <span><span class="text-white font-bold">11 ролей</span> закрывает отдел</span>
                         <span class="text-gray-700">·</span>
-                        <span><span class="text-white font-bold">от 3 тыс.₽/мес</span> вместо зарплат</span>
+                        <span><span class="text-white font-bold">неделя</span> до запуска</span>
                         <span class="text-gray-700">·</span>
                         <span><span class="text-white font-bold">24/7</span> без выходных и отпусков</span>
                     </div>
@@ -237,27 +290,27 @@
                     <div class="grid sm:grid-cols-3 gap-3 mb-8">
                         <div class="glass card rounded-2xl p-4">
                             <div class="text-white font-bold mb-1">Делает</div>
-                            <div class="text-gray-400 text-xs leading-relaxed">Не отвечает текстом, а выполняет: код, сайты, публикации, сервер.</div>
+                            <div class="text-gray-400 text-xs leading-relaxed">Не советует, а выполняет работу целиком: код, сайты, публикации, аналитика.</div>
                         </div>
                         <div class="glass card rounded-2xl p-4">
-                            <div class="text-white font-bold mb-1">Помнит</div>
-                            <div class="text-gray-400 text-xs leading-relaxed">Не обнуляется каждый диалог. Знает тебя и твои проекты месяцами.</div>
+                            <div class="text-white font-bold mb-1">Ведём мы</div>
+                            <div class="text-gray-400 text-xs leading-relaxed">Сервер, обновления, сбои и обучение агентов на нашей стороне.</div>
                         </div>
                         <div class="glass card rounded-2xl p-4">
-                            <div class="text-white font-bold mb-1">Твой</div>
-                            <div class="text-gray-400 text-xs leading-relaxed">Свой сервер, без потолка тарифа. Новые навыки доучиваешь сам.</div>
+                            <div class="text-white font-bold mb-1">Под вас</div>
+                            <div class="text-gray-400 text-xs leading-relaxed">Месяц доучиваем отдел под ваши процессы и вашу манеру ставить задачи.</div>
                         </div>
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-4 mt-2">
                         <a href="#tariffs" class="px-8 py-4 rounded-xl font-bold btn-gradient shadow-[0_4px_20px_rgba(124,58,237,0.3)] hover:shadow-[0_4px_25px_rgba(124,58,237,0.5)] transition-all flex items-center justify-center gap-2 text-white">
-                            Собрать своего агента
+                            Поставить ИИ-отдел
                         </a>
-                        <a href="#result" class="px-8 py-4 rounded-xl font-bold bg-[#121212] border border-[#262626] hover:bg-[#262626] transition-all flex items-center justify-center gap-2 text-white">
-                            Что будет на выходе
+                        <a href="#proof" class="px-8 py-4 rounded-xl font-bold bg-[#121212] border border-[#262626] hover:bg-[#262626] transition-all flex items-center justify-center gap-2 text-white">
+                            Факты за два месяца
                         </a>
                     </div>
-                    <p class="text-xs text-gray-500 mt-6 opacity-70" data-price="jarvis" data-price-suffix=" разово · дальше — ~3 тыс.₽/мес за подписки на ИИ и сервер">59 990₽ разово · дальше — ~3 тыс.₽/мес за подписки на ИИ и сервер</p>
+                    <p class="text-xs text-gray-500 mt-6 opacity-70" data-price="jarvis-rent" data-price-suffix=" вход · дальше 9 990₽/мес за аренду и техобслуживание">90 000₽ вход · дальше 9 990₽/мес за аренду и техобслуживание</p>
                 </div>
 
                 <!-- Telegram mockup -->
@@ -266,12 +319,12 @@
                         <div class="flex items-center gap-3 px-4 py-3 border-b border-[#26323f] bg-[#17212b]">
                             <div class="w-9 h-9 rounded-full bg-ai-gradient flex items-center justify-center font-bold text-sm">Д</div>
                             <div>
-                                <div class="font-semibold text-white text-sm">Джарвис</div>
+                                <div class="font-semibold text-white text-sm">Ваш ИИ-отдел</div>
                                 <div class="text-[11px] text-brand-aiGreen">в сети</div>
                             </div>
                         </div>
                         <div class="p-4 space-y-3 font-mono text-[13px]">
-                            <div class="tg-bubble-out px-3 py-2 max-w-[85%] ml-auto">🎤 голосовое 0:38 — «нужен лендинг под мой курс, дизайн вот такой» + ссылка</div>
+                            <div class="tg-bubble-out px-3 py-2 max-w-[85%] ml-auto">🎤 голосовое 0:38 - «нужен лендинг под мой курс, дизайн вот такой» + ссылка</div>
                             <div class="tg-bubble-in px-3 py-2 max-w-[85%]">Расшифровал. Разбираю референс, собираю структуру и тексты.</div>
                             <div class="tg-bubble-in px-3 py-2 max-w-[85%] flex gap-1">
                                 <span class="typing-dot">●</span><span class="typing-dot">●</span><span class="typing-dot">●</span>
@@ -286,320 +339,302 @@
         </div>
     </header>
 
-    <!-- 2. RESULT: ЧТО У ТЕБЯ БУДЕТ -->
-    <section id="result" class="py-20 relative">
+    <!-- 2. ДЛЯ КОГО И В ЧЁМ БОЛЬ -->
+    <section id="audience" class="py-20 bg-[#121212]/50">
         <div class="container mx-auto px-4 max-w-5xl">
             <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-aos="fade-up">
-                Что у тебя будет <span class="text-gradient">к вечеру четвёртого дня</span>
+                Знакомо, если работа <span class="text-gradient">упирается в подрядчиков</span>
             </h2>
-            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto" data-aos="fade-up">Не папка с материалами, а работающая система. Вот она по пунктам.</p>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto" data-aos="fade-up">Задач много, каждая требует своего специалиста, и каждый выставляет отдельный счёт и отдельный срок.</p>
 
-            <div class="grid md:grid-cols-3 gap-6">
+            <div class="grid md:grid-cols-2 gap-6 mb-16">
                 <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="50">
-                    <div class="text-3xl mb-4">🖥️</div>
-                    <h3 class="text-lg font-bold text-white mb-2">Свой сервер</h3>
-                    <p class="text-gray-400 text-sm">Работает круглосуточно и принадлежит тебе. Не место в чужом сервисе, который завтра поменяет правила.</p>
+                    <p class="text-gray-300">Сайт нужен был вчера, а подрядчик отвечает раз в сутки и просит ещё две недели на согласования.</p>
                 </div>
                 <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-3xl mb-4">💬</div>
-                    <h3 class="text-lg font-bold text-white mb-2">Джарвис в Telegram</h3>
-                    <p class="text-gray-400 text-sm">Понимает голосовые, отвечает текстом, выполняет задачу целиком и присылает результат файлом или ссылкой.</p>
+                    <p class="text-gray-300">Клиенты пишут ночью и в выходные, а отвечать некому до понедельника.</p>
                 </div>
                 <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="150">
-                    <div class="text-3xl mb-4">🛡️</div>
-                    <h3 class="text-lg font-bold text-white mb-2">Ричард на подстраховке</h3>
-                    <p class="text-gray-400 text-sm">Второй агент. Молчит, пока всё работает, и поднимает Джарвиса, когда тот лёг — сам, по логам.</p>
+                    <p class="text-gray-300">Каждая мелочь - новый счёт: пост, разбор конкурентов, правка на сайте, выгрузка базы.</p>
                 </div>
                 <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-3xl mb-4">🧠</div>
-                    <h3 class="text-lg font-bold text-white mb-2">Память, которая не обнуляется</h3>
-                    <p class="text-gray-400 text-sm">Помнит тебя, твои проекты и договорённости через недели и месяцы. Не нужно объяснять контекст каждый раз заново.</p>
+                    <p class="text-gray-300">Нанимать в штат не окупается, а держать в голове пятерых подрядчиков - отдельная работа.</p>
                 </div>
-                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="250">
-                    <div class="text-3xl mb-4">⚙️</div>
-                    <h3 class="text-lg font-bold text-white mb-2">Первый боевой навык</h3>
-                    <p class="text-gray-400 text-sm">Собран под твою реальную работу — и ты понимаешь принцип, по которому добавляешь следующие сам.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-3xl mb-4">💼</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Предприниматели</h3>
+                    <p class="text-gray-400 text-sm">Закрывают одним отделом задачи, под которые раньше нанимали нескольких людей - от сайта до аналитики и поддержки клиентов.</p>
+                </div>
+                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-3xl mb-4">📹</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Эксперты и блогеры</h3>
+                    <p class="text-gray-400 text-sm">Переводят контент, воронку и переписку с клиентами на отдел и освобождают себе время на сам продукт.</p>
                 </div>
                 <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-3xl mb-4">🚀</div>
-                    <h3 class="text-lg font-bold text-white mb-2">Веб-студия под рукой</h3>
-                    <p class="text-gray-400 text-sm">Сайты, боты и автоматизации собираются в тот же вечер, когда пришла идея. Без подрядчиков и очереди.</p>
+                    <div class="text-3xl mb-4">🛠️</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Агентства и студии</h3>
+                    <p class="text-gray-400 text-sm">Обслуживают больше клиентов без расширения команды - рутина уходит отделу, люди остаются на смысле.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. ОДИН ДЕНЬ С ДЖАРВИСОМ -->
-    <section id="day" class="py-20 bg-[#121212]/50">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-aos="fade-up">
-                Один день <span class="text-gradient">с Джарвисом</span>
-            </h2>
-            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto" data-aos="fade-up">Как это выглядит в жизни, а не в описании возможностей.</p>
-
-            <div class="glass card p-8 md:p-10 rounded-3xl mb-10 border-l-4" style="border-left-color: #00D9FF;" data-aos="fade-up">
-                <div class="inline-block py-1 px-3 rounded-full bg-brand-aiCyan/10 text-brand-aiCyan text-xs font-bold uppercase tracking-wider mb-4">Веб-студия в кармане</div>
-                <p class="text-gray-200 text-lg mb-4 leading-relaxed">
-                    Надиктовал голосом, какой хочешь сайт. Скинул ссылку на дизайн, который нравится. Через пятнадцать минут сайт собран и размещён — открывается по ссылке.
-                </p>
-                <p class="text-gray-400 leading-relaxed mb-4">
-                    Правки идут так же: сказал — сделал, пока ты смотришь. ТЗ не выверяется неделями, подрядчик не пропадает на выходных, очередь не стоит. В любое время суток.
-                </p>
-                <p class="text-white font-semibold leading-relaxed">
-                    По цене одного сайта-визитки ты получаешь не сайт. Ты получаешь веб-студию, которая работает на тебя дальше — столько сайтов, лендингов и ботов, сколько понадобится.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-4" data-aos="fade-up">
-                <div class="glass card p-5 rounded-2xl flex gap-4">
-                    <div class="text-brand-aiCyan font-mono text-sm shrink-0 pt-0.5">09:12</div>
-                    <div>
-                        <div class="text-gray-300 text-sm">Надиктовал голосовое по дороге — к обеду готов пост и картинка к нему.</div>
-                        <div class="text-brand-aiGreen font-mono text-[11px] mt-1.5">10 минут вместо вечера за ноутбуком</div>
-                    </div>
-                </div>
-                <div class="glass card p-5 rounded-2xl flex gap-4">
-                    <div class="text-brand-aiViolet font-mono text-sm shrink-0 pt-0.5">11:40</div>
-                    <div>
-                        <div class="text-gray-300 text-sm">Скинул ссылку на ролик конкурента — вернул разбор: хук, структура, призыв и готовое ТЗ монтажёру.</div>
-                        <div class="text-brand-aiGreen font-mono text-[11px] mt-1.5">5 минут вместо часа ручного разбора</div>
-                    </div>
-                </div>
-                <div class="glass card p-5 rounded-2xl flex gap-4">
-                    <div class="text-brand-aiMagenta font-mono text-sm shrink-0 pt-0.5">14:05</div>
-                    <div>
-                        <div class="text-gray-300 text-sm">«Что у конкурентов за месяц» — собрал данные, посчитал, прислал отчёт файлом.</div>
-                        <div class="text-brand-aiGreen font-mono text-[11px] mt-1.5">20 минут вместо дня в таблицах</div>
-                    </div>
-                </div>
-                <div class="glass card p-5 rounded-2xl flex gap-4">
-                    <div class="text-brand-aiCyan font-mono text-sm shrink-0 pt-0.5">17:30</div>
-                    <div>
-                        <div class="text-gray-300 text-sm">Придумал бота для клиентов — к вечеру бот отвечает в Telegram.</div>
-                        <div class="text-brand-aiGreen font-mono text-[11px] mt-1.5">вечер вместо месяца и счёта подрядчику</div>
-                    </div>
-                </div>
-                <div class="glass card p-5 rounded-2xl flex gap-4">
-                    <div class="text-brand-aiViolet font-mono text-sm shrink-0 pt-0.5">21:00</div>
-                    <div>
-                        <div class="text-gray-300 text-sm">Скинул трёхчасовой видеокурс — вернул выжимку под твою задачу, без воды.</div>
-                        <div class="text-brand-aiGreen font-mono text-[11px] mt-1.5">10 минут вместо трёх часов просмотра</div>
-                    </div>
-                </div>
-                <div class="glass card p-5 rounded-2xl flex gap-4">
-                    <div class="text-brand-aiGreen font-mono text-sm shrink-0 pt-0.5">03:40</div>
-                    <div>
-                        <div class="text-gray-300 text-sm">Сайт лёг ночью — Ричард поднял его сам и утром доложил, что случилось.</div>
-                        <div class="text-brand-aiGreen font-mono text-[11px] mt-1.5">узнал от агента, а не от клиентов</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-12 text-center" data-aos="fade-up">
-                <p class="text-gray-400 mb-5">Девять ролей в одном агенте:</p>
-                <div class="marquee-wrapper">
-                    <div class="marquee-container">
-                        <div class="flex items-center"><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Продюсер</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Маркетолог</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Программист</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Дизайнер</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Редактор</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Бизнес-аналитик</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Ресерчер</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Сисадмин</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Ассистент</span></div>
-                        <div class="flex items-center" aria-hidden="true"><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Продюсер</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Маркетолог</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Программист</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Дизайнер</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Редактор</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Бизнес-аналитик</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Ресерчер</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Сисадмин</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Ассистент</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3.5 ИИ-ЧАТ ПРОТИВ ДЖАРВИСА -->
-    <section id="vs-chat" class="py-20 relative">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-aos="fade-up">
-                Обычный ИИ-чат — <span class="text-gradient">и твой Джарвис</span>
-            </h2>
-            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto" data-aos="fade-up">Разница не в модели. Разница в том, что у одного есть память, руки и доступ к твоим задачам, а у другого нет.</p>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="glass card rounded-3xl p-8" data-aos="fade-right">
-                    <div class="flex items-center gap-3 mb-6 opacity-60">
-                        <span class="text-2xl">💭</span>
-                        <h3 class="text-xl font-semibold text-gray-400">Обычный ИИ-чат</h3>
-                    </div>
-                    <ul class="space-y-4 text-gray-400">
-                        <li class="flex gap-3">✕ <span>Каждый разговор с чистого листа — снова объясняешь, кто ты и что за проект</span></li>
-                        <li class="flex gap-3">✕ <span>Советует, как сделать. Делать всё равно тебе</span></li>
-                        <li class="flex gap-3">✕ <span>Пишет усреднённым языком, который видно за версту</span></li>
-                        <li class="flex gap-3">✕ <span>Не видит твои файлы, сервер и переписку — он вообще ни к чему не подключён</span></li>
-                        <li class="flex gap-3">✕ <span>Упирается в лимиты ровно тогда, когда работа пошла</span></li>
-                    </ul>
-                </div>
-
-                <div class="glass card rounded-3xl p-8 relative overflow-hidden" style="border: 1px solid #00D9FF55;" data-aos="fade-left">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-aiCyan/10 blur-[50px] rounded-full"></div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="text-2xl">⚡</span>
-                        <h3 class="text-2xl font-bold text-white">Твой Джарвис</h3>
-                    </div>
-                    <ul class="space-y-4 text-gray-200 font-medium relative z-10">
-                        <li class="flex gap-3">✓ <span>Знает твои проекты и договорённости — контекст не пересказываешь заново</span></li>
-                        <li class="flex gap-3">✓ <span>Делает целиком: собирает, публикует, чинит и присылает результат</span></li>
-                        <li class="flex gap-3">✓ <span>Пишет твоим языком, потому что настроен под тебя, а не под всех сразу</span></li>
-                        <li class="flex gap-3">✓ <span>Живёт на твоём сервере и работает с твоими файлами и задачами</span></li>
-                        <li class="flex gap-3">✓ <span>Растёт новыми навыками, а не новым тарифом</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. CONTRAST BLOCK -->
+    <!-- 3. ПОЧЕМУ СТАРОЕ РЕШЕНИЕ НЕ РАБОТАЕТ -->
     <section id="why" class="py-20 relative">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16" data-aos="fade-up">
-                Нанимать отдел из девяти человек — <span class="text-gradient">или один агент, который не спит</span>
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-aos="fade-up">
+                Штат, подрядчики <span class="text-gradient">или ИИ-отдел</span>
             </h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto" data-aos="fade-up">Один и тот же объём работы, три способа его закрыть. Цифры - медианы открытого рынка на сентябрь 2026.</p>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="glass card rounded-3xl p-8" data-aos="fade-right">
+            <div class="grid lg:grid-cols-3 gap-6 items-stretch">
+                <div class="glass card rounded-3xl p-8 flex flex-col" data-aos="fade-right">
                     <div class="flex items-center gap-3 mb-6 opacity-60">
                         <span class="text-2xl">🧑‍🤝‍🧑</span>
-                        <h3 class="text-xl font-semibold text-gray-400">Нанимать людей</h3>
+                        <h3 class="text-xl font-semibold text-gray-400">Штат</h3>
                     </div>
-                    <ul class="space-y-4 text-gray-400">
-                        <li class="flex gap-3">✕ <span>SMM-фрилансер — от 30 до 100+ тыс.₽/мес (рыночная цена)</span></li>
-                        <li class="flex gap-3">✕ <span>Отдельно программист, отдельно дизайнер — свой чек на каждого</span></li>
-                        <li class="flex gap-3">✕ <span>Сайт под ключ — от 50 тыс.₽ и две-три недели согласований за каждый</span></li>
-                        <li class="flex gap-3">✕ <span>Отпуска, больничные, «забыл», текучка — и снова обучать нового</span></li>
+                    <div class="text-2xl font-extrabold text-white mb-1">1,9-2,1 млн ₽</div>
+                    <div class="text-xs text-gray-500 mb-6">в месяц, со взносами и накладными</div>
+                    <ul class="space-y-3 text-gray-400 text-sm flex-grow">
+                        <li class="flex gap-3">✕ <span>Одиннадцать человек, которых нужно найти и удержать</span></li>
+                        <li class="flex gap-3">✕ <span>Отпуска, больничные, текучка и новое обучение по кругу</span></li>
+                        <li class="flex gap-3">✕ <span>Платите за присутствие, а не за сделанное</span></li>
                     </ul>
                 </div>
 
-                <div class="glass card rounded-3xl p-8 relative overflow-hidden" style="border: 1px solid #7C3AED55;" data-aos="fade-left">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-aiViolet/10 blur-[50px] rounded-full"></div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="text-2xl">⚡</span>
-                        <h3 class="text-2xl font-bold text-white">Джарвис</h3>
+                <div class="glass card rounded-3xl p-8 flex flex-col" data-aos="fade-up">
+                    <div class="flex items-center gap-3 mb-6 opacity-60">
+                        <span class="text-2xl">🧾</span>
+                        <h3 class="text-xl font-semibold text-gray-400">Подрядчики</h3>
                     </div>
-                    <ul class="space-y-4 text-gray-200 font-medium relative z-10">
-                        <li class="flex gap-3">✓ <span data-price="jarvis" data-price-suffix=" разово + ~3 тыс.₽/мес за подписки на ИИ и сервер">59 990₽ разово + ~3 тыс.₽/мес за подписки на ИИ и сервер</span></li>
-                        <li class="flex gap-3">✓ <span>Девять ролей сразу: продюсер, маркетолог, программист, дизайнер, редактор, бизнес-аналитик, ресерчер, сисадмин, ассистент</span></li>
-                        <li class="flex gap-3">✓ <span>Сайты и боты — сколько понадобится, без чека за каждый</span></li>
-                        <li class="flex gap-3">✓ <span>Работает 24/7, помнит весь контекст, не выгорает</span></li>
+                    <div class="text-2xl font-extrabold text-white mb-1">1,0-1,7 млн ₽</div>
+                    <div class="text-xs text-gray-500 mb-6">в месяц за тот же объём работ</div>
+                    <ul class="space-y-3 text-gray-400 text-sm flex-grow">
+                        <li class="flex gap-3">✕ <span>Одиннадцать исполнителей, и каждого надо свести с остальными</span></li>
+                        <li class="flex gap-3">✕ <span>Сроки плавают, качество проверяете вы сами</span></li>
+                        <li class="flex gap-3">✕ <span>Отдельный счёт за каждую задачу и каждую правку</span></li>
+                    </ul>
+                </div>
+
+                <div class="glass card rounded-3xl p-8 flex flex-col relative overflow-hidden" style="border: 1px solid #7C3AED55;" data-aos="fade-left">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-aiViolet/10 blur-[50px] rounded-full"></div>
+                    <div class="flex items-center gap-3 mb-6 relative z-10">
+                        <span class="text-2xl">⚡</span>
+                        <h3 class="text-2xl font-bold text-white">ИИ-отдел</h3>
+                    </div>
+                    <div class="text-2xl font-extrabold text-white mb-1 relative z-10">9,9-19,9 тыс ₽/мес</div>
+                    <div class="text-xs text-gray-400 mb-6 relative z-10">после установки: аренда отдела, сервер и подписки на ИИ</div>
+                    <ul class="space-y-3 text-gray-200 text-sm font-medium flex-grow relative z-10">
+                        <li class="flex gap-3">✓ <span>Одиннадцать ролей в одном контуре, один ответственный - мы</span></li>
+                        <li class="flex gap-3">✓ <span>Работает ночью, в выходные и в праздники</span></li>
+                        <li class="flex gap-3">✓ <span>Цена не растёт вместе с числом задач</span></li>
                     </ul>
                 </div>
             </div>
 
             <div class="mt-12 text-center text-gray-400 text-lg" data-aos="fade-up">
-                Свой сервер, а не место в чужом SaaS. <span class="text-white font-semibold border-b border-brand-aiViolet pb-1">Цена не растёт вместе с объёмом задач.</span>
+                Разница не в цене инструмента. <span class="text-white font-semibold border-b border-brand-aiViolet pb-1">Разница в том, что отдел уже собран и обкатан на боевых задачах.</span>
             </div>
         </div>
     </section>
 
-    <!-- 5. TIMELINE -->
-    <section id="timeline" class="py-20 bg-[#121212]/50">
+    <!-- 4. ДОКАЗАТЕЛЬСТВА -->
+    <section id="proof" class="py-20 bg-[#121212]/50 relative overflow-hidden">
+        <div class="container mx-auto px-4 max-w-5xl relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-aos="fade-up">
+                Это не теория - <span class="text-gradient">это уже так работает</span>
+            </h2>
+            <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto" data-aos="fade-up">Мы продаём тот отдел, на котором работаем сами. Цифры ниже - факт за два месяца, а не прогноз.</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12" data-aos="fade-up">
+                <div class="glass card p-6 rounded-2xl text-center">
+                    <div class="text-3xl font-extrabold text-gradient mb-2 stat-num" data-count="370">370</div>
+                    <div class="text-gray-400 text-xs">задач закрыто за два месяца</div>
+                </div>
+                <div class="glass card p-6 rounded-2xl text-center">
+                    <div class="text-3xl font-extrabold text-gradient mb-2 stat-num" data-count="340 751₽">340 751₽</div>
+                    <div class="text-gray-400 text-xs">принесла одна автоворонка</div>
+                </div>
+                <div class="glass card p-6 rounded-2xl text-center">
+                    <div class="text-3xl font-extrabold text-gradient mb-2 stat-num" data-count="3 700+">3 700+</div>
+                    <div class="text-gray-400 text-xs">лидов привлечено и обработано</div>
+                </div>
+                <div class="glass card p-6 rounded-2xl text-center">
+                    <div class="text-3xl font-extrabold text-gradient mb-2 stat-num" data-count="11">11</div>
+                    <div class="text-gray-400 text-xs">ролей закрывает отдел</div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="50">
+                    <h3 class="text-lg font-bold text-white mb-3">Аналитика</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>18 технических аудитов сайтов: индексация, скорость, семантика, видимость в ИИ-поиске</li>
+                        <li>9 аудитов соцсетей и точек входа</li>
+                        <li>4 глубоких аудита позиционирования эксперта</li>
+                        <li>Расшифровка созвонов по базе из 30 клиентов с крупными чеками</li>
+                    </ul>
+                </div>
+                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-lg font-bold text-white mb-3">Продажи</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>Автоворонка полного цикла: 214 оплат без человека в переписке</li>
+                        <li>7 рекламных кампаний с сегментацией базы и дожимными механиками</li>
+                        <li>5 мини-продуктов собрано и запущено</li>
+                        <li>11 персональных коммерческих предложений</li>
+                    </ul>
+                </div>
+                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="150">
+                    <h3 class="text-lg font-bold text-white mb-3">Разработка</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>5 ботов и мини-приложений, включая рабочую панель с карточкой клиента</li>
+                        <li>4 сайта и лендинга</li>
+                        <li>Недельный курс целиком: программа, уроки, лендинг, оплата, выдача доступа</li>
+                        <li>Два выделенных сервера на Unix и десяток сайтов в одном контуре</li>
+                    </ul>
+                </div>
+                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-lg font-bold text-white mb-3">Поддержка клиентов</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>До 440 входящих сообщений в сутки отдел разбирает сам</li>
+                        <li>Живой диалог передаётся человеку, когда это действительно нужно</li>
+                        <li>Оплаты, возвраты и сорванные платежи видны в панели</li>
+                        <li>Ночью и в выходные отдел работает так же, как днём</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass card p-8 md:p-10 rounded-3xl mt-12 relative overflow-hidden border-l-4" style="border-left-color: #00D9FF;" data-aos="fade-up">
+                <div class="absolute -top-16 -right-16 w-64 h-64 bg-brand-aiCyan/10 blur-[80px] rounded-full"></div>
+                <div class="relative z-10">
+                    <div class="inline-block py-1 px-3 rounded-full bg-brand-aiCyan/10 text-brand-aiCyan text-xs font-bold uppercase tracking-wider mb-4">Кто это собрал</div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">И эту страницу, и цифры выше собрал <span class="text-gradient">Джарвис</span></h3>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                        Джарвис - ключевой ИИ-сотрудник отдела и мастер на все руки. Он меняет роли под задачу: сегодня аналитик и считает выручку прямо в базе, завтра вебмастер и верстает лендинг, к вечеру копирайтер, а ночью разбирает переписку с клиентами.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                        Текст, вёрстка и публикация этой страницы - его работа. Статистика за два месяца тоже посчитана им: не по памяти, а запросами к базе оплат, к базе лидов и к рабочей доске задач.
+                    </p>
+                    <p class="text-white font-semibold leading-relaxed">
+                        Это и есть суть отдела: одна голова, которая умеет становиться любым специалистом, и десяток рук вокруг неё. Не скриншот и не обещание, а инструмент, который в момент чтения уже работает.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. МАРШРУТ ДО РЕЗУЛЬТАТА -->
+    <section id="timeline" class="py-20">
         <div class="container mx-auto px-4 max-w-5xl">
             <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-aos="fade-up">
-                4 дня <span class="text-gradient">шаг за шагом</span>
+                Неделя до запуска, <span class="text-gradient">месяц до полной самостоятельности</span>
             </h2>
-            <p class="text-center text-brand-aiCyan font-semibold uppercase tracking-wider text-sm mb-16" data-aos="fade-up">Доступ ко всем дням — сразу после оплаты. Идёшь в своём темпе</p>
+            <p class="text-center text-brand-aiCyan font-semibold uppercase tracking-wider text-sm mb-16" data-aos="fade-up">Работу делаем мы. От вас нужны только задачи и ответы на вопросы</p>
 
             <div class="relative max-w-4xl mx-auto">
                 <div class="absolute left-[19px] md:left-1/2 top-0 bottom-0 w-[2px] bg-[#262626] md:-translate-x-1/2"></div>
 
-                <!-- День 0 -->
                 <div class="relative flex flex-col md:flex-row items-center justify-between mb-12 group">
                     <div class="hidden md:block md:w-[45%]"></div>
-                    <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full bg-[#121212] border-4 border-[#000000] text-brand-aiCyan flex items-center justify-center z-10 md:-translate-x-1/2 font-bold shadow-[0_0_15px_rgba(0,217,255,0.3)] transition-transform group-hover:scale-110">0</div>
+                    <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full bg-[#121212] border-4 border-[#000000] text-brand-aiCyan flex items-center justify-center z-10 md:-translate-x-1/2 font-bold shadow-[0_0_15px_rgba(0,217,255,0.3)] transition-transform group-hover:scale-110">1</div>
                     <div class="w-full md:w-[45%] pl-16 md:pl-0 md:pr-12 text-left md:text-right" data-aos="fade-right">
                         <div class="glass card p-6 rounded-2xl hover:border-brand-aiCyan/50 transition-colors text-left inline-block w-full">
-                            <div class="text-brand-aiCyan font-bold text-sm mb-1 uppercase tracking-wider">День 0</div>
-                            <h3 class="text-xl font-bold text-white mb-2">Подготовка</h3>
-                            <p class="text-gray-400">Аккаунт Anthropic (Pro/Max), ровный цифровой след, арендованный сервер (VPS) в Европе. Всё техническое готово к установке.</p>
+                            <div class="text-brand-aiCyan font-bold text-sm mb-1 uppercase tracking-wider">День 1-2</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Разбор задач и состав отдела</h3>
+                            <p class="text-gray-400">Созвон: что у вас болит, какие задачи повторяются, куда уходят деньги и время. На выходе - состав отдела и список первых процессов, которые он забирает.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- День 1 -->
                 <div class="relative flex flex-col md:flex-row-reverse items-center justify-between mb-12 group">
                     <div class="hidden md:block md:w-[45%]"></div>
-                    <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full bg-[#121212] border-4 border-[#000000] text-brand-aiViolet flex items-center justify-center z-10 md:-translate-x-1/2 font-bold shadow-[0_0_15px_rgba(124,58,237,0.3)] transition-transform group-hover:scale-110">1</div>
+                    <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full bg-[#121212] border-4 border-[#000000] text-brand-aiViolet flex items-center justify-center z-10 md:-translate-x-1/2 font-bold shadow-[0_0_15px_rgba(124,58,237,0.3)] transition-transform group-hover:scale-110">2</div>
                     <div class="w-full md:w-[45%] pl-16 md:pl-12 text-left" data-aos="fade-left">
                         <div class="glass card p-6 rounded-2xl hover:border-brand-aiViolet/50 transition-colors w-full">
-                            <div class="text-brand-aiViolet font-bold text-sm mb-1 uppercase tracking-wider">День 1</div>
-                            <h3 class="text-xl font-bold text-white mb-2">Установка и первый диалог</h3>
-                            <p class="text-gray-400">Инсталлер разворачивает агента на сервере. Два бота в Telegram — Джарвис (основной) и Ричард (страховка на случай сбоя). Оба отвечают к концу дня, голосовые понимает.</p>
+                            <div class="text-brand-aiViolet font-bold text-sm mb-1 uppercase tracking-wider">День 3-5</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Развёртывание контура</h3>
+                            <p class="text-gray-400">Сервер, базы, боты, подписки, доступы - оформляем и настраиваем мы. Вы не покупаете номера, не поднимаете виртуальные машины и не разбираетесь в логах.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- День 2 -->
                 <div class="relative flex flex-col md:flex-row items-center justify-between mb-12 group">
                     <div class="hidden md:block md:w-[45%]"></div>
-                    <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full bg-[#121212] border-4 border-[#000000] text-brand-aiMagenta flex items-center justify-center z-10 md:-translate-x-1/2 font-bold shadow-[0_0_15px_rgba(236,72,153,0.3)] transition-transform group-hover:scale-110">2</div>
+                    <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full bg-[#121212] border-4 border-[#000000] text-brand-aiMagenta flex items-center justify-center z-10 md:-translate-x-1/2 font-bold shadow-[0_0_15px_rgba(236,72,153,0.3)] transition-transform group-hover:scale-110">3</div>
                     <div class="w-full md:w-[45%] pl-16 md:pl-0 md:pr-12 text-left md:text-right" data-aos="fade-right">
                         <div class="glass card p-6 rounded-2xl hover:border-brand-aiMagenta/50 transition-colors text-left inline-block w-full">
-                            <div class="text-brand-aiMagenta font-bold text-sm mb-1 uppercase tracking-wider">День 2</div>
-                            <h3 class="text-xl font-bold text-white mb-2">Авторская настройка памяти</h3>
-                            <p class="text-gray-400">Слои памяти, авто-ротация, подключение семантической памяти. Агент помнит контекст между сессиями — не забывает, кто ты и что вы уже обсуждали.</p>
+                            <div class="text-brand-aiMagenta font-bold text-sm mb-1 uppercase tracking-wider">К концу недели</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Передача готового отдела</h3>
+                            <p class="text-gray-400">Память, границы, первые рабочие навыки под ваши процессы - настроены. Вы пишете в Telegram и получаете результат. Продукт готов и работает.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- День 3 -->
                 <div class="relative flex flex-col md:flex-row-reverse items-center justify-between group">
                     <div class="hidden md:block md:w-[45%]"></div>
-                    <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full bg-[#121212] border-4 border-[#000000] text-brand-aiCyan flex items-center justify-center z-10 md:-translate-x-1/2 font-bold shadow-[0_0_15px_rgba(0,217,255,0.3)] transition-transform group-hover:scale-110">3</div>
+                    <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full bg-[#121212] border-4 border-[#000000] text-brand-aiGreen flex items-center justify-center z-10 md:-translate-x-1/2 font-bold shadow-[0_0_15px_rgba(34,197,94,0.3)] transition-transform group-hover:scale-110">4</div>
                     <div class="w-full md:w-[45%] pl-16 md:pl-12 text-left" data-aos="fade-left">
-                        <div class="glass card p-6 rounded-2xl hover:border-brand-aiCyan/50 transition-colors w-full">
-                            <div class="text-brand-aiCyan font-bold text-sm mb-1 uppercase tracking-wider">День 3</div>
-                            <h3 class="text-xl font-bold text-white mb-2">Скиллы под твои задачи</h3>
-                            <p class="text-gray-400">Границы агента (что делает сам, что спрашивает) и первый боевой навык под реальную задачу — например, разбор Reels конкурентов или YouTube-продюсирование. Дальше добавляешь новые скиллы сам.</p>
+                        <div class="glass card p-6 rounded-2xl hover:border-brand-aiGreen/50 transition-colors w-full">
+                            <div class="text-brand-aiGreen font-bold text-sm mb-1 uppercase tracking-wider">Месяц после запуска</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Доучиваем под вас и сопровождаем</h3>
+                            <p class="text-gray-400">Отдел учится вашим процессам, вашей манере ставить задачи и вашим клиентам. Мы правим, дообучаем и держим на связи - пока он не начнёт работать так, как работал бы человек, знающий ваш бизнес.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="text-center mt-16" data-aos="zoom-in">
-                <a href="#tariffs" class="inline-flex px-8 py-4 rounded-xl font-bold btn-gradient shadow-lg text-white">Смотреть тариф</a>
+                <a href="#tariffs" class="inline-flex px-8 py-4 rounded-xl font-bold btn-gradient shadow-lg text-white">Смотреть условия</a>
             </div>
         </div>
     </section>
 
-    <!-- 5.5 ЧТО ПОДКЛЮЧАЕТСЯ -->
-    <section id="tools" class="py-20">
+    <!-- 6. ФОРМАТ: КАКИЕ РОЛИ ЗАКРЫВАЕТ -->
+    <section id="roles" class="py-20 bg-[#121212]/50">
         <div class="container mx-auto px-4 max-w-5xl">
             <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-aos="fade-up">
-                Новый навык — это <span class="text-gradient">разговор, а не разработка</span>
+                Одиннадцать ролей, <span class="text-gradient">которые закрывает отдел</span>
             </h2>
-            <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto" data-aos="fade-up">Агент доучивается сам: говоришь, что нужно уметь, — он ставит себе инструмент и проверяет, что тот работает. В Дне 3 собираешь первый навык, дальше повторяешь принцип.</p>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto" data-aos="fade-up">Это не список возможностей из рекламы, а роли, которые отдел реально закрывал последние два месяца.</p>
 
-            <div class="flex flex-wrap gap-3 justify-center mb-10" data-aos="fade-up">
-                <span class="px-4 py-2 rounded-xl glass text-sm font-semibold text-gray-300">Telegram</span>
-                <span class="px-4 py-2 rounded-xl glass text-sm font-semibold text-gray-300">Аналитика Instagram</span>
-                <span class="px-4 py-2 rounded-xl glass text-sm font-semibold text-gray-300">YouTube и субтитры</span>
-                <span class="px-4 py-2 rounded-xl glass text-sm font-semibold text-gray-300">Расшифровка голоса</span>
-                <span class="px-4 py-2 rounded-xl glass text-sm font-semibold text-gray-300">Веб-ресёрч</span>
-                <span class="px-4 py-2 rounded-xl glass text-sm font-semibold text-gray-300">Графики и таблицы</span>
-                <span class="px-4 py-2 rounded-xl glass text-sm font-semibold text-gray-300">Схемы и диаграммы</span>
-                <span class="px-4 py-2 rounded-xl glass text-sm font-semibold text-gray-300">Сайты и хостинг</span>
-                <span class="px-4 py-2 rounded-xl glass text-sm font-semibold text-gray-300">Генерация картинок</span>
-                <span class="px-4 py-2 rounded-xl glass text-sm font-semibold text-gray-300">Маркетплейс готовых скиллов</span>
-                <span class="px-4 py-2 rounded-xl glass text-sm font-semibold text-gray-300">n8n — мост к сотням сервисов</span>
+            <div class="grid md:grid-cols-2 gap-4 mb-12">
+                <div class="glass card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="50"><span class="text-white font-bold">Разработчик ботов и интеграций</span><span class="text-gray-400 text-sm"> - боты, платёжные приёмники, очереди, автоматизации</span></div>
+                <div class="glass card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="60"><span class="text-white font-bold">Системный администратор</span><span class="text-gray-400 text-sm"> - серверы, базы, мониторинг, бэкапы</span></div>
+                <div class="glass card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="70"><span class="text-white font-bold">Вебмастер</span><span class="text-gray-400 text-sm"> - сайты, лендинги, страницы продуктов</span></div>
+                <div class="glass card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="80"><span class="text-white font-bold">SEO-специалист</span><span class="text-gray-400 text-sm"> - техаудиты, семантика, видимость в поиске и ИИ-выдаче</span></div>
+                <div class="glass card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="90"><span class="text-white font-bold">Аналитик данных</span><span class="text-gray-400 text-sm"> - конверсии по шагам, когорты, замеры до и после</span></div>
+                <div class="glass card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="100"><span class="text-white font-bold">Маркетолог-стратег</span><span class="text-gray-400 text-sm"> - позиционирование, линейка продуктов, сценарии воронок</span></div>
+                <div class="glass card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="110"><span class="text-white font-bold">Копирайтер</span><span class="text-gray-400 text-sm"> - тексты воронок, писем, лендингов и документов</span></div>
+                <div class="glass card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="120"><span class="text-white font-bold">Специалист по рассылкам</span><span class="text-gray-400 text-sm"> - сегментация базы, волны писем, дожимы</span></div>
+                <div class="glass card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="130"><span class="text-white font-bold">Поддержка и продажи в переписке</span><span class="text-gray-400 text-sm"> - отвечает клиентам сам, до 440 сообщений в сутки</span></div>
+                <div class="glass card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="140"><span class="text-white font-bold">Дизайнер-верстальщик документов</span><span class="text-gray-400 text-sm"> - предложения и отчёты в фирменной вёрстке</span></div>
+                <div class="glass card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="150"><span class="text-white font-bold">Проджект-менеджер</span><span class="text-gray-400 text-sm"> - постановка задач, контроль, приёмка по факту</span></div>
+                <div class="glass card p-5 rounded-2xl border border-brand-aiViolet/40" data-aos="fade-up" data-aos-delay="160"><span class="text-white font-bold">На вас остаётся одно</span><span class="text-gray-400 text-sm"> - сказать, что нужно сделать</span></div>
             </div>
 
-            <p class="text-center text-gray-400" data-aos="fade-up">Не нашлось готового — агент напишет навык под тебя с нуля. Это обычная для него работа, а не отдельный проект.</p>
+            <div class="text-center" data-aos="fade-up">
+                <p class="text-gray-400 mb-5">Что отдел подключает к себе по ходу работы:</p>
+                <div class="marquee-wrapper">
+                    <div class="marquee-container">
+                        <div class="flex items-center"><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Telegram</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Аналитика Instagram</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">YouTube и субтитры</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Расшифровка голоса</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Веб-ресёрч</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Графики и таблицы</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">CRM</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Платёжные системы</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Сайты и хостинг</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Генерация картинок</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Мост к сотням сервисов</span></div>
+                        <div class="flex items-center" aria-hidden="true"><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Telegram</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Аналитика Instagram</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">YouTube и субтитры</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Расшифровка голоса</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Веб-ресёрч</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Графики и таблицы</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">CRM</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Платёжные системы</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Сайты и хостинг</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Генерация картинок</span><span class="px-4 py-2 mx-1.5 rounded-full glass text-xs font-semibold text-gray-300 whitespace-nowrap">Мост к сотням сервисов</span></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- 6. AUTHORITY / META-PROOF -->
-    <section id="proof" class="py-20 relative overflow-hidden">
+    <!-- 7. КТО ДЕЛАЕТ -->
+    <section id="author" class="py-20 relative overflow-hidden">
         <div class="container mx-auto px-4 max-w-5xl relative z-10">
             <h2 class="text-3xl md:text-5xl font-bold text-center mb-16" data-aos="fade-up">
-                Это не теория — <span class="text-gradient">это уже так работает</span>
+                Кто <span class="text-gradient">ставит отдел</span>
             </h2>
 
-            <div class="glass card p-8 md:p-10 rounded-3xl mb-16 border-l-4" style="border-left-color: #7C3AED;" data-aos="fade-up">
-                <p class="text-gray-300 text-lg mb-4">
-                    Этот текст, этот лендинг и его публикация на сервере — сделаны и выложены агентом, собранным по этой же методике. Не скриншот, не рендер обещаний — рабочий инструмент, который в момент чтения этой страницы уже отвечает в Telegram.
-                </p>
-            </div>
-
-            <div class="flex flex-col sm:flex-row gap-6 items-start glass card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex flex-col sm:flex-row gap-6 items-start glass card p-8 rounded-3xl" data-aos="fade-up">
                 <a href="https://t.me/ai_gromov8" target="_blank" rel="noopener noreferrer" class="relative shrink-0 group" title="Телеграм-канал Громова">
                     <img src="assets/img/gromov.jpg" alt="Громов" class="w-28 h-28 rounded-full border-2 border-brand-aiCyan object-cover shadow-[0_0_20px_rgba(0,217,255,0.3)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_0_30px_rgba(0,217,255,0.55)]">
                 </a>
@@ -607,201 +642,89 @@
                     <h3 class="text-3xl font-extrabold text-white mb-3">Громов</h3>
                     <a href="https://t.me/ai_gromov8" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-3 py-1 rounded-lg bg-brand-aiCyan/10 text-brand-aiCyan font-semibold text-sm mb-4 hover:bg-brand-aiCyan/20 transition-colors">@ai_gromov8</a>
                     <div class="text-gray-400 text-sm leading-relaxed space-y-2">
-                        <p>Математик-программист, управленец. Более 20 лет топ-менеджер: «Авторадио Тверь», «Европа плюс Тверская область», РИА «Верхневолжье». Экс генеральный директор медиахолдинга на 100+ человек.</p>
-                        <p>Автор системы «ТурбоРилс». Свой отдел из таких же агентов держит в работе каждый день: они ведут маркетинг, пишут код и следят за серверами. Воркшоп собран не из теории, а из того, что уже проверено на собственных задачах.</p>
+                        <p>Математик-программист, управленец. Более 20 лет топ-менеджер: «Авторадио Тверь», «Европа плюс Тверская область», РИА «Верхневолжье». Экс генеральный директор медиахолдинга на 100+ человек. Преподавал цифровизацию в Иннополисе и Академии внешней торговли.</p>
+                        <p>Свой ИИ-отдел держит в работе каждый день: он ведёт маркетинг, пишет код, собирает сайты и следит за серверами. Вам ставится тот же отдел, а не его описание.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 7. AUDIENCE + OFFER FOR TURBOREELS GRADUATES -->
-    <section id="audience" class="py-20 bg-[#121212]/50">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16" data-aos="fade-up">Для кого этот воркшоп</h2>
-
-            <div class="glass card p-8 md:p-10 rounded-3xl mb-16 relative border-l-4" style="border-left-color: #00D9FF;" data-aos="fade-up">
-                <div class="inline-block py-1 px-3 rounded-full bg-brand-aiCyan/10 text-brand-aiCyan text-xs font-bold uppercase tracking-wider mb-4">Если ты уже прошёл ТурбоРилс</div>
-                <p class="text-gray-300 text-lg mb-4">
-                    Систему трафика ты уже поставил. Охваты идут. Но затык давно не в подписчиках, а в твоём личном времени: ресёрч доноров, нейроописания, сценарии по таблице, мониторинг конкурентов, ответы в Директ.
-                </p>
-                <p class="text-gray-400 leading-relaxed">
-                    Это и есть тот самый следующий шаг, который курс называет прямым текстом — «продюсерский отдел на ИИ». Четыре вечера — и агент сам скачивает топ-Reels конкурентов, транскрибирует, вытаскивает хук и структуру, выдаёт готовое ТЗ монтажёру, мониторит тренды и пишет тебе сам, если что-то произошло. Дальше он твой навсегда — доращивай под любую следующую задачу без нового курса и нового специалиста.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-3xl mb-4">📹</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Блогеры и эксперты</h3>
-                    <p class="text-gray-400 text-sm">Уже раскачали Instagram — переводят контент-конвейер на агента и освобождают себе время.</p>
-                </div>
-                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-3xl mb-4">💼</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Предприниматели</h3>
-                    <p class="text-gray-400 text-sm">Закрывают одним агентом задачи, под которые раньше нанимали нескольких отдельных людей — от сайта до аналитики.</p>
-                </div>
-                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-3xl mb-4">🛠️</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Фрилансеры / SMM</h3>
-                    <p class="text-gray-400 text-sm">Обслуживают больше клиентов без найма команды — агент берёт рутину на себя.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 8. ЧТО ПОНАДОБИТСЯ -->
-    <section id="needs" class="py-20">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-aos="fade-up">
-                Что понадобится <span class="text-gradient">кроме желания</span>
-            </h2>
-            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto" data-aos="fade-up">Говорю заранее и честно, чтобы после оплаты не было сюрпризов. Технических навыков ни один пункт не требует.</p>
-
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="50">
-                    <h3 class="text-lg font-bold text-white mb-2">Подписка Claude</h3>
-                    <p class="text-gray-400 text-sm">Оформляется на зарубежную карту. В Дне 0 разобраны рабочие способы оплаты из России — по шагам, с готовыми ссылками.</p>
-                </div>
-                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-lg font-bold text-white mb-2">Сервер в аренду</h3>
-                    <p class="text-gray-400 text-sm">Обычная виртуальная машина, поднимается за десять минут по инструкции. Вместе с подпиской это те самые ~3 тыс.₽/мес.</p>
-                </div>
-                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="150">
-                    <h3 class="text-lg font-bold text-white mb-2">Аккуратный доступ</h3>
-                    <p class="text-gray-400 text-sm">Claude — иностранный сервис, заходить в него нужно ровно. Настраивается один раз в Дне 0 и дальше не трогается.</p>
-                </div>
-                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="text-lg font-bold text-white mb-2">Пара вечеров</h3>
-                    <p class="text-gray-400 text-sm">2-4 часа в день, спокойно, с готовыми командами. Вставляешь по порядку, агент ведёт дальше сам.</p>
-                </div>
-            </div>
-
-            <div class="mt-10 text-center text-gray-400" data-aos="fade-up">
-                Возиться не хочется? <span class="text-white font-semibold">Тариф «под ключ» закрывает все четыре пункта без тебя.</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 9. ГАРАНТИЯ РЕЗУЛЬТАТА -->
-    <section id="promise" class="py-20 bg-[#121212]/50">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <div class="glass card p-8 md:p-12 rounded-3xl border-l-4" style="border-left-color: #22C55E;" data-aos="fade-up">
-                <div class="inline-block py-1 px-3 rounded-full bg-brand-aiGreen/10 text-brand-aiGreen text-xs font-bold uppercase tracking-wider mb-5">Доводим до результата</div>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ты уходишь не с материалами, а с работающим агентом</h2>
-                <p class="text-gray-300 text-lg leading-relaxed mb-4">
-                    Обязательство простое: доводим тебя до живого Джарвиса, который забирает на себя рутину и умеет спродюсировать эксперта как целая команда запуска — от идеи до лендинга и чат-бота в Telegram.
-                </p>
-                <p class="text-gray-400 leading-relaxed">
-                    Застрял на шаге, что-то не встало, агент отвечает не так — пишешь в чат поддержки, разбираем и идём дальше. Без «читайте документацию» и «у нас всё работает».
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 10. BONUSES -->
-    <section id="bonuses" class="py-20">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-aos="fade-up">Бонусы <span class="text-gradient">внутри воркшопа</span></h2>
-            <p class="text-center text-gray-400 mb-16 max-w-xl mx-auto" data-aos="fade-up">Идут вместе с любым тарифом — до оплаты знай, что получаешь сверху.</p>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-3xl mb-4">🌐</div>
-                    <h3 class="text-lg font-bold text-white mb-2">Сотрудник-хостер</h3>
-                    <p class="text-gray-400 text-sm">Джарвис знает, как размещать твои сайты на самом быстром и совершенно бесплатном хостинге.</p>
-                </div>
-                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-3xl mb-4">🤖</div>
-                    <h3 class="text-lg font-bold text-white mb-2">Свой сервер под ботов</h3>
-                    <p class="text-gray-400 text-sm">Запускаешь сервер, на который можно поставить своего Telegram чат-бота — и даже КВН. Силами того же Джарвиса.</p>
-                </div>
-                <div class="glass card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-3xl mb-4">🎓</div>
-                    <h3 class="text-lg font-bold text-white mb-2">Учитель-Джарвис</h3>
-                    <p class="text-gray-400 text-sm">Смотрит вместо тебя любой видеокурс и раскладывает его «по уму» под твои задачи.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 11. TARIFFS -->
+    <!-- 8. ТАРИФЫ -->
     <section id="tariffs" class="py-20 relative">
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-aiViolet/15 via-black/75 to-black/75"></div>
-        <div class="container mx-auto px-4 max-w-6xl relative z-10">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16" data-aos="fade-up">Тарифы</h2>
+        <div class="container mx-auto px-4 max-w-5xl relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4" data-aos="fade-up">Условия</h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto" data-aos="fade-up">Два способа получить отдел. В обоих работу делаем мы.</p>
 
-            <div class="grid lg:grid-cols-3 gap-6 items-stretch max-w-6xl mx-auto">
-                <div class="glass card rounded-3xl p-6 flex flex-col relative shadow-[0_0_40px_rgba(124,58,237,0.25)]" style="border: 2px solid #7C3AED;" data-aos="zoom-in">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 btn-gradient text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg whitespace-nowrap uppercase tracking-wider">
-                        Воркшоп «Джарвис»
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-6 mt-4 text-center">Собираешь сам, по шагам</h3>
-                    <ul class="space-y-3 mb-6 flex-grow text-sm">
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Доступ ко всем четырём дням — сразу после оплаты</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Поддержка в чате Telegram — пока агент не заработает</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Пошаговые промпты на каждый день — вставляешь, и агент ведёт дальше</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Работающий Джарвис в Telegram + Ричард на подстраховке</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Настроенная память и минимум один боевой скилл под твою задачу</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Все будущие обновления курса — бесплатно</li>
-                    </ul>
-                    <div class="text-3xl font-extrabold text-white mb-2 text-center" data-price="jarvis">59 990₽</div>
-                    <div class="text-xs text-gray-500 text-center mb-4">+ ~3 тыс.₽/мес за подписки на ИИ и сервер</div>
-                    <div class="text-[11px] text-gray-500 text-center mb-4 leading-relaxed border-t border-[#262626] pt-3">Сервер и агент — твои. Обслуживание, обновления и починка на твоей стороне.</div>
-                    <a href="https://tg.bedzen.ru/pay?p=jarvis" target="_blank" rel="noopener noreferrer" class="w-full text-center py-4 rounded-xl btn-gradient font-bold shadow-lg text-white" data-price="jarvis" data-price-prefix="Оплатить — ">Оплатить — 59 990₽</a>
-                </div>
-
-                <div class="glass card rounded-3xl p-6 flex flex-col relative shadow-[0_0_40px_rgba(34,197,94,0.22)]" style="border: 2px solid #22C55E;" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#121212] border border-brand-aiGreen text-brand-aiGreen px-6 py-2 rounded-full text-sm font-bold shadow-lg whitespace-nowrap uppercase tracking-wider">
+            <div class="grid lg:grid-cols-2 gap-6 items-stretch max-w-4xl mx-auto">
+                <div class="glass card rounded-3xl p-6 flex flex-col relative shadow-[0_0_50px_rgba(0,217,255,0.20)]" style="border: 2px solid #00D9FF;" data-aos="zoom-in">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#141428] border border-brand-aiCyan text-brand-aiCyan px-6 py-2 rounded-full text-sm font-bold shadow-lg whitespace-nowrap uppercase tracking-wider">
                         В аренду
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-6 mt-4 text-center">Агент в нашем ИИ-отделе</h3>
+                    <h3 class="text-2xl font-bold text-white mb-6 mt-4 text-center">Отдел на нашем сервере</h3>
                     <ul class="space-y-3 mb-6 flex-grow text-sm">
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiGreen">✓</span> Вход 90 000₽ вместо 129 990₽ — и ни одной покупки на тебе</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiGreen">✓</span> Номер, аккаунт, сервер, боты и подписки — оформляем мы</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiGreen">✓</span> Отдадим доступ под твои задачи — сразу пишешь ему в Telegram</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiGreen">✓</span> Настроим память и соберём первый скилл под твои задачи</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiGreen">✓</span> Каждый месяц агент сильнее: навыки и правки, обкатанные на нашем отделе, приезжают без доплат</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiGreen">✓</span> Упал ночью — поднимаем мы: ты не лезешь в логи и не платишь за сервер отдельной строкой</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Номер, аккаунты, сервер, боты и подписки - оформляем мы, ни одной покупки на вас</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Запуск за неделю: пишете задачу в Telegram и получаете результат</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Сервер, базы и обслуживание - наши. Упал ночью, поднимаем мы</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Каждый месяц отдел сильнее: навыки и правки, обкатанные на нашем контуре, приезжают без доплат</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Техническое сопровождение всё время аренды</li>
                     </ul>
                     <div class="text-3xl font-extrabold text-white mb-1 text-center" data-price="jarvis-rent">90 000₽</div>
-                    <div class="text-sm text-brand-aiGreen font-bold text-center mb-2" data-price="jarvis-rent-monthly" data-price-prefix="+ " data-price-suffix="/мес — аренда и техобслуживание">+ 9 990₽/мес — аренда и техобслуживание</div>
+                    <div class="text-sm text-brand-aiCyan font-bold text-center mb-2" data-price="jarvis-rent-monthly" data-price-prefix="+ " data-price-suffix="/мес - аренда и техобслуживание">+ 9 990₽/мес - аренда и техобслуживание</div>
                     <div class="text-xs text-gray-500 text-center mb-4">+ ~2 тыс.₽/мес за подписку на ИИ</div>
-                    <div class="text-[11px] text-gray-500 text-center mb-4 leading-relaxed border-t border-[#262626] pt-3">Сервер и обслуживание — наши. Ты только ставишь задачи.</div>
-                    <a href="https://tg.bedzen.ru/pay?p=jarvis-rent" target="_blank" rel="noopener noreferrer" class="w-full text-center py-4 rounded-xl font-bold shadow-lg text-white bg-[#121212] border border-brand-aiGreen hover:bg-brand-aiGreen/10 transition-colors" data-price="jarvis-rent" data-price-prefix="Оплатить — ">Оплатить — 90 000₽</a>
+                    <div class="text-[11px] text-gray-500 text-center mb-4 leading-relaxed border-t border-[#262626] pt-3">Контур наш. Вы только ставите задачи.</div>
+                    <a href="https://tg.bedzen.ru/pay?p=jarvis-rent" target="_blank" rel="noopener noreferrer" class="w-full text-center py-4 rounded-xl font-bold shadow-lg text-white btn-cyan" data-price="jarvis-rent" data-price-prefix="Оплатить - ">Оплатить - 90 000₽</a>
                 </div>
 
-                <div class="glass card rounded-3xl p-6 flex flex-col relative shadow-[0_0_40px_rgba(0,217,255,0.2)]" style="border: 2px solid #00D9FF55;" data-aos="zoom-in" data-aos-delay="150">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#121212] border border-brand-aiCyan text-brand-aiCyan px-6 py-2 rounded-full text-sm font-bold shadow-lg whitespace-nowrap uppercase tracking-wider">
+                <div class="glass card rounded-3xl p-6 flex flex-col relative shadow-[0_0_40px_rgba(124,58,237,0.25)]" style="border: 2px solid #7C3AED;" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 btn-gradient text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg whitespace-nowrap uppercase tracking-wider">
                         Под ключ
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4 mt-4 text-center">Мы сделаем всё за тебя</h3>
+                    <h3 class="text-2xl font-bold text-white mb-4 mt-4 text-center">Отдел ваш целиком</h3>
                     <div class="flex items-center justify-center gap-2 mb-6 text-sm">
                         <span class="w-2 h-2 rounded-full bg-brand-aiGreen inline-block animate-pulse"></span>
                         <span class="text-gray-300"><span class="text-white font-bold">3 места в месяц</span> · свободно 2</span>
                     </div>
                     <ul class="space-y-3 mb-6 flex-grow text-sm">
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Купим номер телефона под агента и оформим аккаунт</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Поднимем сервер, подключим Telegram и создадим ботов</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Оплатим нужные подписки и настроим доступ</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Настроим память и соберём первый скилл под твои задачи</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Отдадим готовых Джарвиса и Ричарда — ты сразу пишешь им в Telegram</li>
-                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Ты не устанавливаешь ничего сам</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Готовый продукт за неделю: контур, боты, доступы, первые рабочие навыки</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Месяц доучиваем отдел под ваши процессы, задачи и клиентов</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Месяц сопровождения: правки, разбор сбоев, ответы на вопросы</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Купим номер, оформим аккаунты, поднимем сервер и оплатим подписки</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> Вы не устанавливаете ничего сами</li>
+                        <li class="flex items-start gap-3 text-gray-300"><span class="text-brand-aiCyan">✓</span> После месяца контур ваш: сервер, агенты и память остаются у вас</li>
                     </ul>
                     <div class="text-3xl font-extrabold text-white mb-2 text-center" data-price="jarvis-turnkey">129 990₽</div>
                     <div class="text-xs text-gray-500 text-center mb-4">+ ~3 тыс.₽/мес за подписки на ИИ и сервер</div>
-                    <div class="text-[11px] text-gray-500 text-center mb-4 leading-relaxed border-t border-[#262626] pt-3">Сервер и агент — твои. Обслуживание, обновления и починка на твоей стороне.</div>
-                    <a href="https://tg.bedzen.ru/pay?p=jarvis-turnkey" target="_blank" rel="noopener noreferrer" class="w-full text-center py-4 rounded-xl font-bold shadow-lg text-white bg-[#121212] border border-brand-aiCyan hover:bg-brand-aiCyan/10 transition-colors" data-price="jarvis-turnkey" data-price-prefix="Оплатить — ">Оплатить — 129 990₽</a>
+                    <div class="text-[11px] text-gray-500 text-center mb-4 leading-relaxed border-t border-[#262626] pt-3">Неделя на сборку, месяц на доучивание и сопровождение.</div>
+                    <a href="https://tg.bedzen.ru/pay?p=jarvis-turnkey" target="_blank" rel="noopener noreferrer" class="w-full text-center py-4 rounded-xl btn-gradient font-bold shadow-lg text-white" data-price="jarvis-turnkey" data-price-prefix="Оплатить - ">Оплатить - 129 990₽</a>
                 </div>
             </div>
 
-            <div class="glass card rounded-3xl p-8 max-w-3xl mx-auto mt-16" data-aos="fade-up">
-                <h3 class="text-xl font-bold text-white mb-4">Посчитай на своих задачах</h3>
+            <div class="glass card rounded-3xl p-8 max-w-4xl mx-auto mt-12 border-l-4" style="border-left-color: #00D9FF;" data-aos="fade-up">
+                <div class="inline-block py-1 px-3 rounded-full bg-brand-aiCyan/10 text-brand-aiCyan text-xs font-bold uppercase tracking-wider mb-4">Дополнительно к любому тарифу</div>
+                <div class="flex flex-col md:flex-row md:items-center gap-6">
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold text-white mb-3">Телеграм-адаптер: агент управляет вашим обычным аккаунтом</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                            Отдел получает руки в самом Telegram, а не только в боте. Пишет и читает от вашего аккаунта, ведёт переписку с клиентами, собирает и разбирает сообщения из чатов и каналов, вытаскивает нужное из закрытых сообществ, отслеживает упоминания и связывается с людьми по списку.
+                        </p>
+                        <p class="text-gray-500 text-xs">Ставится за один день, работает на обоих тарифах.</p>
+                    </div>
+                    <div class="shrink-0 text-center md:border-l md:border-[#262626] md:pl-6">
+                        <div class="text-3xl font-extrabold text-white mb-3" data-price="jarvis-tg-adapter">19 900₽</div>
+                        <a href="https://tg.bedzen.ru/pay?p=jarvis-tg-adapter" target="_blank" rel="noopener noreferrer" class="inline-flex px-6 py-3 rounded-xl font-bold shadow-lg text-white btn-cyan" data-price="jarvis-tg-adapter" data-price-prefix="Добавить - ">Добавить - 19 900₽</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass card rounded-3xl p-8 max-w-4xl mx-auto mt-8" data-aos="fade-up">
+                <h3 class="text-xl font-bold text-white mb-4">Посчитайте на своих задачах</h3>
                 <p class="text-gray-400 leading-relaxed mb-4">
-                    Сайт у подрядчика — от 50 000₽ и две-три недели согласований. Пост у копирайтера — 1 500-3 000₽. Разбор конкурентов у маркетолога — от 10 000₽. Бот — ещё один счёт и ещё одно ожидание. Это рыночные ориентиры, свои цифры подставь сам.
+                    Сайт у подрядчика - от 50 000₽ и две-три недели согласований. Пост у копирайтера - 1 500-3 000₽. Разбор конкурентов у маркетолога - от 10 000₽. Бот - ещё один счёт и ещё одно ожидание. Тот же объём работ, что отдел закрывает за месяц, подрядчиками стоит 1,0-1,7 млн ₽.
                 </p>
                 <p class="text-white font-semibold leading-relaxed">
-                    Джарвис делает всё это столько раз, сколько понадобится, — в рамках ~3 тыс.₽/мес за подписки на своём сервере или <span data-price="jarvis-rent-monthly" data-price-suffix="/мес">9 990₽/мес</span> в аренду на нашем. Считать окупаемость обычно приходится не месяцами, а задачами.
+                    Отдел делает всё это столько раз, сколько понадобится, - в рамках 9,9-19,9 тыс ₽ в месяц вместе с сервером и подписками. Окупаемость считается не месяцами, а задачами.
                 </p>
             </div>
 
@@ -811,7 +734,7 @@
         </div>
     </section>
 
-    <!-- 12. FAQ -->
+    <!-- 9. FAQ -->
     <section id="faq" class="py-20 bg-[#121212]/50">
         <div class="container mx-auto px-4 max-w-3xl">
             <h2 class="text-3xl md:text-5xl font-bold text-center mb-12" data-aos="fade-up">Ответы на вопросы</h2>
@@ -819,100 +742,90 @@
             <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
                 <details class="glass rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                     <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
-                        Нужно ли уметь программировать?
+                        Нужно ли что-то уметь и устанавливать?
                         <span class="text-gray-400">⌄</span>
                     </summary>
                     <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">Нет. Каждый день воркшопа — готовые команды и промпты, которые ты просто вставляешь по порядку. Агент проводит тебя дальше сам, вручную ты делаешь только шаги с оплатой и токенами.</div>
+                        <div itemprop="text">Нет. Сборку, настройку и обслуживание делаем мы. От вас нужен разговор о задачах на старте и ответы на уточняющие вопросы дальше. Работа с отделом выглядит как переписка в Telegram.</div>
                     </div>
                 </details>
 
                 <details class="glass rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                     <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
-                        Я не проходил ТурбоРилс — надо ли сначала пройти его?
+                        Чем аренда отличается от тарифа «под ключ»?
                         <span class="text-gray-400">⌄</span>
                     </summary>
                     <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">Не надо. ТурбоРилс я рекомендую только тем, кто хочет качать трафик из Instagram — и вот там Джарвис заменяет сразу нескольких дорогих сотрудников. Но трафик из инсты — далеко не единственное, для чего он нужен. С Джарвисом множество задач, которые ещё вчера стоили десятки, а иногда и сотни тысяч рублей, делаются быстро и укладываются в стоимость подписки: сайты, боты, аналитика, тексты, автоматизации. Воркшоп самодостаточен, начинать можно прямо с него.</div>
+                        <div itemprop="text">В аренде контур остаётся нашим: сервер, обслуживание и обновления на нашей стороне, вы платите ежемесячно и ни за чем не следите. «Под ключ» - отдел становится вашим: мы собираем его за неделю, месяц доучиваем под ваши процессы и сопровождаем, после чего сервер, агенты и память остаются у вас.</div>
                     </div>
                 </details>
 
                 <details class="glass rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                     <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
-                        Что нужно кроме оплаты воркшопа?
+                        Сколько ждать до первого результата?
                         <span class="text-gray-400">⌄</span>
                     </summary>
                     <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">Подписка Claude и арендованный сервер — вместе это те самые ~3 тыс.₽/мес. Подписка оформляется на зарубежную карту, заход в сервис настраивается один раз. Всё это разобрано в Дне 0 по шагам, отдельных навыков не требует. На тарифе «под ключ» настройку берём на себя, а на тарифе «в аренду» сервер и обслуживание — наши.</div>
+                        <div itemprop="text">Неделя от старта до работающего отдела. Первые задачи он берёт сразу после передачи доступа, дальше месяц уходит на то, чтобы он выучил ваши процессы и перестал переспрашивать очевидное.</div>
                     </div>
                 </details>
 
                 <details class="glass rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                     <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
-                        А что если сервер упадёт или агент сломается?
+                        А если сервер упадёт или агент сломается?
                         <span class="text-gray-400">⌄</span>
                     </summary>
                     <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">На это и стоит второй агент — Ричард. Он молчит, пока всё работает, и включается, когда основной агент падает или отвечает не так: смотрит логи и чинит сам.</div>
+                        <div itemprop="text">В контуре стоит второй агент-сторож: он молчит, пока всё работает, и поднимает основного, когда тот лёг. На аренде разбор сбоев на нас всё время работы, на тарифе «под ключ» - месяц сопровождения, дальше по договорённости.</div>
                     </div>
                 </details>
 
                 <details class="glass rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                     <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
-                        Сколько времени в день занимает установка?
+                        Что даёт телеграм-адаптер и зачем он нужен?
                         <span class="text-gray-400">⌄</span>
                     </summary>
                     <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">В среднем 2-4 часа на день — идёшь сверху вниз по материалу, вставляешь готовые команды и промпты, дожидаешься результата на каждом шаге. Доступ открывается сразу после оплаты, темп выбираешь сам.</div>
+                        <div itemprop="text">Обычный бот пишет только тем, кто сам ему написал. Адаптер даёт отделу доступ к вашему личному аккаунту: он может вести переписку от вашего имени, читать и разбирать чаты и каналы, собирать нужное из сообществ и связываться с людьми по списку. Стоит 19 900₽ и ставится за день.</div>
                     </div>
                 </details>
 
                 <details class="glass rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                     <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
-                        Чем это лучше готового чат-бота или конструктора вроде Manychat?
+                        Чем это лучше конструктора вроде Manychat?
                         <span class="text-gray-400">⌄</span>
                     </summary>
                     <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">Конструктор работает по заранее собранным сценариям и стоит тем дороже, чем больше у тебя сообщений и задач. Джарвис стоит на твоём сервере, помнит контекст, сам пишет и запускает код, и ты можешь бесконечно добавлять ему новые навыки — без нового тарифа и без потолка возможностей.</div>
+                        <div itemprop="text">Конструктор работает по заранее собранным сценариям и дорожает вместе с числом сообщений. Отдел стоит на собственном сервере, помнит контекст, сам пишет и запускает код, собирает сайты и разбирает данные. Новые задачи не упираются в тариф.</div>
                     </div>
                 </details>
 
                 <details class="glass rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                     <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
-                        Могу я потом сам добавлять новые задачи агенту?
+                        Кому отдел не подойдёт?
                         <span class="text-gray-400">⌄</span>
                     </summary>
                     <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">Да, это и есть смысл Дня 3 — на воркшопе ты собираешь свой первый боевой навык вместе с агентом и понимаешь принцип. Дальше повторяешь его под любую новую задачу сам.</div>
-                    </div>
-                </details>
-
-                <details class="glass rounded-2xl group cursor-pointer" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <summary class="flex justify-between items-center p-6 font-semibold text-lg" itemprop="name">
-                        Я уже прошёл ТурбоРилс — зачем мне это?
-                        <span class="text-gray-400">⌄</span>
-                    </summary>
-                    <div class="px-6 pb-6 text-gray-400 border-t border-[#262626] pt-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">Трафик у тебя уже идёт. Следующее узкое место — не охваты, а твоё личное время на рутину контента. Это именно тот шаг, который сам курс называет следующим — «продюсерский отдел на ИИ».</div>
+                        <div itemprop="text">Тем, у кого нет повторяющихся задач: если работа разовая и раз в квартал, дешевле нанять подрядчика под конкретный проект. Отдел окупается там, где задачи идут потоком - контент, клиенты, сайты, аналитика, переписка.</div>
                     </div>
                 </details>
             </div>
         </div>
     </section>
 
-    <!-- 13. LEAD MAGNET -->
+    <!-- 10. LEAD MAGNET -->
     <section id="ask" class="py-20">
         <div class="container mx-auto px-4 max-w-3xl text-center">
             <div class="glass card rounded-3xl p-10 border border-[#262626] relative overflow-hidden" data-aos="zoom-in">
                 <div class="relative z-10">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Сомневаешься, где именно агент сэкономит время?</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Не уверены, что именно отдел заберёт у вас?</h2>
                     <p class="text-gray-400 mb-8 text-lg leading-relaxed">
-                        Напиши в Telegram — бесплатно разберём, какие твои сегодняшние задачи можно снять с себя и передать агенту, и подходит ли тебе воркшоп.
+                        Напишите в Telegram - бесплатно разберём ваши сегодняшние задачи: какие из них отдел закроет сразу, какие после доучивания, а какие вообще не стоит ему отдавать.
                     </p>
                     <a href="https://t.me/LubovForte" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#2AABEE] text-white font-bold hover:bg-[#2298D6] transition-colors mb-3 shadow-[0_0_20px_rgba(42,171,238,0.3)] hover:shadow-[0_0_25px_rgba(42,171,238,0.5)]">
                         Написать в Telegram
                     </a>
-                    <div class="text-[10px] text-gray-500 uppercase tracking-widest">Без рекламы, без спама — просто разбор</div>
+                    <div class="text-[10px] text-gray-500 uppercase tracking-widest">Без рекламы, без спама - просто разбор</div>
                 </div>
             </div>
         </div>
@@ -922,7 +835,7 @@
         <div class="container mx-auto px-4 max-w-[1200px]">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
                 <div class="flex items-center gap-2 text-[#71717a] font-bold tracking-widest uppercase text-[10px] md:text-xs">
-                    © 2026 TR6 · Джарвис — автономный ИИ-агент
+                    © 2026 TR6 · ИИ-отдел под ключ
                 </div>
             </div>
             <div class="text-center text-xs opacity-60 font-normal">
@@ -1055,6 +968,55 @@
                     });
                 })
                 .catch((e) => console.warn('прайс не получен, показана цена из разметки', e));
+        })();
+
+        // Свет внутри карточки идёт за курсором: координаты отдаём в CSS-переменные.
+        (function () {
+            if (window.matchMedia('(hover: none)').matches) return;
+            document.querySelectorAll('.card').forEach((card) => {
+                card.addEventListener('mousemove', (e) => {
+                    const r = card.getBoundingClientRect();
+                    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+                    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+                });
+            });
+        })();
+
+        // Крупные цифры набегают при появлении в кадре. Формат берём из разметки:
+        // пробелы, плюс и знак рубля возвращаем на место после анимации.
+        (function () {
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const nums = document.querySelectorAll('[data-count]');
+            if (!nums.length || reduce || !('IntersectionObserver' in window)) return;
+
+            const run = (el) => {
+                const raw = el.dataset.count;
+                const digits = raw.replace(/[^0-9]/g, '');
+                const target = parseInt(digits, 10);
+                if (!target) return;
+                const tail = raw.slice(raw.lastIndexOf(digits[digits.length - 1]) + 1);
+                const grouped = /\s/.test(raw);
+                const start = performance.now();
+                const dur = 1100;
+                const tick = (now) => {
+                    const t = Math.min(1, (now - start) / dur);
+                    const eased = 1 - Math.pow(1 - t, 3);
+                    const val = Math.round(target * eased);
+                    el.textContent = (grouped ? val.toLocaleString('ru-RU').replace(/ /g, ' ') : String(val)) + tail;
+                    if (t < 1) requestAnimationFrame(tick);
+                    else el.textContent = raw;
+                };
+                requestAnimationFrame(tick);
+            };
+
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    run(entry.target);
+                    io.unobserve(entry.target);
+                });
+            }, { threshold: 0.6 });
+            nums.forEach((n) => io.observe(n));
         })();
     </script>
 </body>
