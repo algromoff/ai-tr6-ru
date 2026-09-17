@@ -2,17 +2,33 @@
 <html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO & Meta -->
     <title>ИИ-отдел под ключ | Собираем и ведём мы, вы ставите задачи</title>
     <meta name="description" content="Собираем ИИ-отдел под ваш бизнес и ведём его сами. Одиннадцать ролей в одном контуре: разработка, сайты, аналитика, тексты, рассылки, поддержка клиентов. Вы ставите задачи в Telegram и получаете результат.">
     <meta name="keywords" content="ии отдел, нейроотдел, ии агент, джарвис, автоматизация бизнеса, интеграция ии, ии сотрудник">
 
+    <link rel="canonical" href="https://ai.tr6.ru/">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
     <!-- OpenGraph -->
     <meta property="og:title" content="ИИ-отдел под ключ | Собираем и ведём мы">
     <meta property="og:description" content="Отдел из ИИ-сотрудников работает круглосуточно и закрывает работу одиннадцати специалистов. Вы ставите задачи, остальное на нас.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ai.tr6.ru/">
+    <meta property="og:site_name" content="ИИ-отдел под ключ">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:image" content="https://ai.tr6.ru/assets/img/og-cover.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ИИ-отдел под ключ: одиннадцать ролей в одном контуре">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ИИ-отдел под ключ | Собираем и ведём мы">
+    <meta name="twitter:description" content="Одиннадцать ролей в одном контуре: разработка, сайты, аналитика, тексты, рассылки, поддержка клиентов. Вы ставите задачи в Telegram.">
+    <meta name="twitter:image" content="https://ai.tr6.ru/assets/img/og-cover.jpg">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><defs><linearGradient id='grad' x1='0%25' y1='100%25' x2='100%25' y2='0%25'><stop offset='0%25' stop-color='%2300D9FF'/><stop offset='50%25' stop-color='%237C3AED'/><stop offset='100%25' stop-color='%23EC4899'/></linearGradient></defs><path fill='url(%23grad)' d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/></svg>">
@@ -222,6 +238,153 @@
         .typing-dot:nth-child(3) { animation-delay: .4s; }
         @keyframes blink { 0%, 80%, 100% { opacity: .2; } 40% { opacity: 1; } }
     </style>
+
+    <!-- Структурированные данные: организация, две услуги с ценами, адаптер,
+         вопросы. Из FAQPage поисковые ассистенты берут прямые ответы, поэтому
+         формулировки здесь совпадают с блоком вопросов на странице. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://ai.tr6.ru/#org",
+          "name": "ИИ-отдел под ключ",
+          "url": "https://ai.tr6.ru/",
+          "image": "https://ai.tr6.ru/assets/img/og-cover.jpg",
+          "description": "Собираем ИИ-отдел под задачи бизнеса и ведём его сами. Одиннадцать ролей в одном контуре: разработка, сайты, аналитика, тексты, рассылки, поддержка клиентов.",
+          "areaServed": "RU",
+          "priceRange": "19900-129990 RUB",
+          "founder": { "@type": "Person", "name": "Александр Громов" },
+          "sameAs": ["https://t.me/LubovForte"]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://ai.tr6.ru/#page",
+          "url": "https://ai.tr6.ru/",
+          "name": "ИИ-отдел под ключ | Собираем и ведём мы, вы ставите задачи",
+          "inLanguage": "ru-RU",
+          "dateModified": "2026-09-17",
+          "isPartOf": { "@id": "https://ai.tr6.ru/#org" }
+        },
+        {
+          "@type": "Service",
+          "name": "ИИ-отдел в аренду",
+          "serviceType": "Интеграция и ведение отдела ИИ-агентов",
+          "provider": { "@id": "https://ai.tr6.ru/#org" },
+          "description": "Отдел разворачивается за неделю на нашем сервере. Номер, аккаунты, боты, подписки и техническое сопровождение на нашей стороне, заказчик только ставит задачи в Telegram.",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Установка, первый платёж",
+              "price": "90000",
+              "priceCurrency": "RUB",
+              "url": "https://ai.tr6.ru/#tariffs",
+              "availability": "https://schema.org/InStock"
+            },
+            {
+              "@type": "Offer",
+              "name": "Аренда и техобслуживание, месяц",
+              "price": "9990",
+              "priceCurrency": "RUB",
+              "url": "https://ai.tr6.ru/#tariffs",
+              "availability": "https://schema.org/InStock"
+            }
+          ]
+        },
+        {
+          "@type": "Service",
+          "name": "ИИ-отдел под ключ",
+          "serviceType": "Интеграция отдела ИИ-агентов с передачей контура",
+          "provider": { "@id": "https://ai.tr6.ru/#org" },
+          "description": "Готовый продукт за неделю, месяц доучивания под процессы заказчика и месяц сопровождения. После этого сервер, агенты и память остаются у заказчика.",
+          "offers": {
+            "@type": "Offer",
+            "price": "129990",
+            "priceCurrency": "RUB",
+            "url": "https://ai.tr6.ru/#tariffs",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "Service",
+          "name": "Телеграм-адаптер к ИИ-отделу",
+          "serviceType": "Дополнение к тарифам ИИ-отдела",
+          "provider": { "@id": "https://ai.tr6.ru/#org" },
+          "description": "Агент управляет обычным аккаунтом Telegram: пишет и читает от имени владельца, ведёт переписку с клиентами, разбирает чаты и каналы, собирает упоминания. Ставится за один день.",
+          "offers": {
+            "@type": "Offer",
+            "price": "19900",
+            "priceCurrency": "RUB",
+            "url": "https://ai.tr6.ru/#tariffs",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://ai.tr6.ru/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Нужно ли что-то уметь и устанавливать?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Нет. Сборку, настройку и обслуживание делаем мы. От вас нужен разговор о задачах на старте и ответы на уточняющие вопросы дальше. Работа с отделом выглядит как переписка в Telegram."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Чем аренда отличается от тарифа «под ключ»?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "В аренде контур остаётся нашим: сервер, обслуживание и обновления на нашей стороне, вы платите ежемесячно и ни за чем не следите. «Под ключ» - отдел становится вашим: мы собираем его за неделю, месяц доучиваем под ваши процессы и сопровождаем, после чего сервер, агенты и память остаются у вас."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Сколько ждать до первого результата?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Неделя от старта до работающего отдела. Первые задачи он берёт сразу после передачи доступа, дальше месяц уходит на то, чтобы он выучил ваши процессы и перестал переспрашивать очевидное."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "А если сервер упадёт или агент сломается?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "В контуре стоит второй агент-сторож: он молчит, пока всё работает, и поднимает основного, когда тот лёг. На аренде разбор сбоев на нас всё время работы, на тарифе «под ключ» - месяц сопровождения, дальше по договорённости."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Что даёт телеграм-адаптер и зачем он нужен?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Обычный бот пишет только тем, кто сам ему написал. Адаптер даёт отделу доступ к вашему личному аккаунту: он может вести переписку от вашего имени, читать и разбирать чаты и каналы, собирать нужное из сообществ и связываться с людьми по списку. Стоит 19 900 рублей и ставится за день."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Чем это лучше конструктора вроде Manychat?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Конструктор работает по заранее собранным сценариям и дорожает вместе с числом сообщений. Отдел стоит на собственном сервере, помнит контекст, сам пишет и запускает код, собирает сайты и разбирает данные. Новые задачи не упираются в тариф."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Кому отдел не подойдёт?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Тем, у кого нет повторяющихся задач: если работа разовая и раз в квартал, дешевле нанять подрядчика под конкретный проект. Отдел окупается там, где задачи идут потоком - контент, клиенты, сайты, аналитика, переписка."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="antialiased pb-safe selection:bg-brand-aiViolet selection:text-white">
 
