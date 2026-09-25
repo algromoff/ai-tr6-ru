@@ -21,4 +21,4 @@ Allow: /
 User-agent: YandexAdditional
 Allow: /
 
-Sitemap: https://ai.tr6.ru/sitemap.xml
+Sitemap: https://ai.grmv8.ru/sitemap.xml
